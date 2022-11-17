@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
+import { BiUser, BiLockAlt } from 'react-icons/bi';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import('./profile.css');
 
 const Login = () => {
@@ -18,8 +20,8 @@ const Login = () => {
   }
 
 
-  function togglePasswordVisibility(event) {
-    setPasswordVisibility(event.target.checked);
+  function togglePasswordVisibility() {
+    setPasswordVisibility(!passwordVisibility);
     let passwordType = document.getElementById("passwordInput");
     passwordType.type === "password" ?  passwordType.type = "text" : passwordType.type = "password";
   }
@@ -29,16 +31,20 @@ const Login = () => {
     <div className='vert-flex-container'>
       <form  onSubmit={loginFormSubmitHandler} className='user-form'>
         <label>Enter Username:</label>
-        <input type='text' value={username} onChange={(event) => setUsername(event.target.value)}></input>
+        <div className='input-container'>
+          <BiUser />
+          <input type='text' value={username} onChange={(event) => setUsername(event.target.value)}></input>
+        </div>
 
         <br />
 
         <label>Enter Password:</label>
-        <input type='password' value={password} id='passwordInput' onChange={(event) => setPassword(event.target.value)}></input>
-
-        <div className='centered'>
-          <label className='small-text'>Show Password?</label>
-          <input type='checkbox' value={passwordVisibility} onChange={togglePasswordVisibility}></input>
+        <div className='input-container'>
+          <BiLockAlt />
+          <input type='password' value={password} id='passwordInput' onChange={(event) => setPassword(event.target.value)}></input>
+          {
+            passwordVisibility ? <AiOutlineEye onClick={togglePasswordVisibility} className='clickable'/> : <AiOutlineEyeInvisible onClick={togglePasswordVisibility} className='clickable'/>
+          }
         </div>
 
         <br />
