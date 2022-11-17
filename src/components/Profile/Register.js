@@ -26,7 +26,7 @@ const Register = () => {
 
   return (
     <div className='vert-flex-container'>
-      <form  onSubmit={registerFormSubmitHandler}>
+      <form  onSubmit={registerFormSubmitHandler} className='user-form'>
         <label>Enter New Username:</label>
         <input type='text' value={username} onChange={(event) => setUsername(event.target.value)}></input>
 
@@ -42,7 +42,7 @@ const Register = () => {
 
         <br />
 
-        <button type='submit'>Register</button>
+        <button type='submit' className='login-button'>Register</button>
       </form>
     </div>
   )
