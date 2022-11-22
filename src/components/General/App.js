@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Navbar from './Navbar';
-import Logout from '../Profile/Logout';
 
 import '../index.css';
 import './general.css';
+
+const { userFetch } = require('../../api/user');
 
 const App = () => {
 
@@ -15,30 +16,17 @@ const App = () => {
     const [ productData, setProductData ] = useState([]);
 
     useEffect(() => {
-        async function checkLoggedIn() {    
-            try {
-                const response = await fetch(
-                    'https://poster-backendapi.onrender.com/api/users/me',
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${localStorage.getItem("token")}`
-                        },
-                    })
-                    
-                const data = await response.json();
-
-                if (data.username) {
-                    console.log("already logged in! user data: ", data);
-                    setUserData(data);
-                    setLoggedIn(true);
-                } else console.log('not already logged in');
-
-            } catch(error) {
-                console.log(error);
-            }
+        // check for local storage token and set user data with a user fetch
+        async function checkforUser() {
+            const userFetchData = await userFetch();
+            if (userFetchData.user) {
+                console.log("already logged in! user data: ", data);
+                setUserData(userFetchData);
+                setLoggedIn(true);
+            } else console.log('not already logged in...');
         }
-        checkLoggedIn();
+        checkforUser();
+
 
         // Product Fetch
         async function fetchProductData() {
