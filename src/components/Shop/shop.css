@@ -1,1 +1,29 @@
 /* Styling for Shop Components */
+
+/* Products */
+
+.products-container {
+  display: flex;
+  border: 3px solid yellow;
+  flex-wrap: wrap;
+}
+
+.product {
+  border: 1px solid red;
+  margin: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product img {
+  border: 3px solid white;
+  margin: auto;
+}
+
+.product-info {
+  border: 3px solid pink;
+  padding-left: 25px;
+}
+
+/* Searchbar */
