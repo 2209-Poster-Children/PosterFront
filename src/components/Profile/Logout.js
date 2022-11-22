@@ -1,9 +1,16 @@
 // import React from 'react';
 
+import('./profile.css');
+
 const Logout = () => {
+
+  function logOutUser() {
+    console.log("logging out...");
+  }
+
   return (
     <div>
-      Get me out of here!
+      <button onClick={logOutUser}>Logout</button>
     </div>
   )
 }
