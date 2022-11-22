@@ -8,11 +8,17 @@ const App = () => {
 
     return (
         <div>
-            <h1>Single Page Web App</h1>
+            <header>
+                <h1>Poster Children</h1>
+            </header>
 
             <Navbar />
             
             <Outlet context />
+
+            <footer>
+                <h4>Wep App Assembled by DYMI 2209</h4>
+            </footer>
         </div>
     )
 }

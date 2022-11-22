@@ -1,6 +1,37 @@
 /* Styling for General Components */
 
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Supermercado+One&display=swap');
+
+/* App */
+
+header h1 {
+  text-align: center;
+  font-family: 'Rubik Mono one';
+}
+
+/* Navbar */
+
+.navbar-return {
+  display: flex;
+  justify-content: center;
+  background-color: darkcyan;
+  /* border: 5px solid red; */
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  width: 700px;
+  background-color: darkcyan;
+  /* border: 3px solid lightblue; */
+}
+
+nav a {
+  text-decoration: none;
+  background-color: darkcyan;
+}
 
 /* ErrorPage */
 
