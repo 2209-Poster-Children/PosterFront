@@ -1,6 +1,6 @@
 // users fetches
 
-async function registerFetch(username, password) {
+export async function registerFetch(username, password) {
     try {
         const response = await fetch(
             'https://poster-backendapi.onrender.com/api/users/register',
@@ -25,7 +25,7 @@ async function registerFetch(username, password) {
 }
 
 
-async function loginFetch(username, password) {
+export async function loginFetch(username, password) {
     try {
         const response = await fetch(
             'https://poster-backendapi.onrender.com/api/users/login',
@@ -50,7 +50,7 @@ async function loginFetch(username, password) {
 }
 
 
-async function userFetch() {    
+export async function userFetch() {    
     try {
         const response = await fetch(
             'https://poster-backendapi.onrender.com/api/users/me',
@@ -68,6 +68,3 @@ async function userFetch() {
         console.log(error);
     }
 }
-
-
-module.exports = { registerFetch, loginFetch, userFetch };
