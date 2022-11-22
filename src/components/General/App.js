@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Home = () => {
+const App = () => {
 
     return (
         <div>
-            <h1>Posters Home</h1>
+            <h1>Single Page Web App</h1>
         </div>
     )
 }
 
-export default Home;
+export default App;
