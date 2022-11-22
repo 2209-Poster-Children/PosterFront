@@ -5,7 +5,7 @@ import { BiUser, BiLockAlt, BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import('./profile.css');
 
-const { loginFetch, userFetch } = require('../../api/user');
+const { loginFetch, userFetch } = require('../../api/users');
 
 const Login = () => {
 

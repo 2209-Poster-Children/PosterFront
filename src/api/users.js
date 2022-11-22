@@ -1,4 +1,4 @@
-// user fetches
+// users fetches
 
 async function registerFetch(username, password) {
     try {

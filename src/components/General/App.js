@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import '../index.css';
 import './general.css';
 
-const { userFetch } = require('../../api/user');
+const { userFetch } = require('../../api/users');
 
 const App = () => {
 
