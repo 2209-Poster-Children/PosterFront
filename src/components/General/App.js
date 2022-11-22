@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Index = () => {
+const Home = () => {
 
     return (
         <div>
-            <h1>Posters Index</h1>
+            <h1>Posters Home</h1>
         </div>
     )
 }
 
-export default Index;
+export default Home;
