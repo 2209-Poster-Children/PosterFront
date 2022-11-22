@@ -1,12 +1,15 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-const Home = () => {
+const App = () => {
 
     return (
         <div>
-            <h1>Posters Home</h1>
+            <h1>Single Page Web App</h1>
+            
+            <Outlet context />
         </div>
     )
 }
 
-export default Home;
+export default App;
