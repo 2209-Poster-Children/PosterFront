@@ -9,7 +9,7 @@ import './general.css';
 
 const App = () => {
 
-    const [ profileData, setProfileData ] = useState({});
+    const [ userData, setUserData ] = useState({});
     const [ loggedIn, setLoggedIn ] = useState(false);
 
     const [ productData, setProductData ] = useState([]);
@@ -27,20 +27,17 @@ const App = () => {
                     })
                     
                 const data = await response.json();
-                setProfileData(data);
-
-                console.log("already logged in! user data: ", data); // TODO: fix error
 
                 if (data.username) {
-                    setProfileData(data);
+                    console.log("already logged in! user data: ", data);
+                    setUserData(data);
                     setLoggedIn(true);
-                }
+                } else console.log('not already logged in');
 
             } catch(error) {
                 console.log(error);
             }
         }
-
         checkLoggedIn();
 
         // Product Fetch
@@ -71,18 +68,12 @@ const App = () => {
                 <h1>Poster Children</h1>
             </header>
 
-            {
-                // temp log out button, probs move somewhere better
-                loggedIn ? <Logout /> : null
-            }
-
             <Navbar />
             
             <Outlet context={{ 
-                loggIngObj: [loggedIn, setLoggedIn],
-                profileObj: [productData, setProductData],
+                userObj: {loggedIn, setLoggedIn, userData, setUserData},
                 productObj: [productData, setProductData]
-             }} />
+            }} />
 
             <footer>
                 <h4>Wep App Assembled by DYMI 2209</h4>
