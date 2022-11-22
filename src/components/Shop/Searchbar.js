@@ -1,3 +1,5 @@
+import './shop.css'
+
 const Searchbar = () => {
   return (
     <div>

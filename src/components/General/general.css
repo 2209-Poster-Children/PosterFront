@@ -1,0 +1,10 @@
+/* Styling for General Components */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Supermercado+One&display=swap');
+
+/* ErrorPage */
+
+.error-return h1 {
+  font-family: 'Supermercado One';
+  text-align: center;
+}

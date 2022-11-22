@@ -1,3 +1,4 @@
+import './shop.css';
 import Searchbar from './Searchbar';
 
 const Products = () => {
