@@ -20,7 +20,7 @@ header h1 {
   /* border: 5px solid red; */
 }
 
-nav {
+.navbar {
   display: flex;
   justify-content: space-around;
   width: 700px;
@@ -28,9 +28,10 @@ nav {
   /* border: 3px solid lightblue; */
 }
 
-nav a {
+.navbar a {
   text-decoration: none;
   background-color: darkcyan;
+  
 }
 
 /* ErrorPage */
