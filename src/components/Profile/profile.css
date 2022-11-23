@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-form {
+.user-form {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -16,14 +16,14 @@ form {
     font-size: 14pt;
 }
 
-form input {
+.user-form input {
     border-width: 2px;
     border-style: solid;
     border-radius: 5px;
 }
 
 
-button {
+.login-button {
     /* background-color: red; */
     border-width: 2px;
     border-style: solid;

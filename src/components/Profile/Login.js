@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div className='vert-flex-container'>
-      <form  onSubmit={loginFormSubmitHandler}>
+      <form  onSubmit={loginFormSubmitHandler} className='user-form'>
         <label>Enter Username:</label>
         <input type='text' value={username} onChange={(event) => setUsername(event.target.value)}></input>
 
@@ -43,7 +43,7 @@ const Login = () => {
 
         <br />
 
-        <button type='submit'>Login</button>
+        <button type='submit' className='login-button'>Login</button>
       </form>
 
       <Link to="/register">Don't have an account? Click here to sign up</Link>
