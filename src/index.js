@@ -10,6 +10,9 @@ import Home from './components/General/Home';
 import Login from './components/Profile/Login';
 import Register from './components/Profile/Register';
 import Profile from './components/Profile/Profile';
+import Orders from './components/Profile/Orders';
+import Reviews from './components/Profile/Reviews';
+import Addresses from './components/Profile/Addresses';
 // SHOP
 import Products from './components/Shop/Products';
 import ProductDetails from './components/Shop/ProductDetails';
@@ -37,6 +40,18 @@ const router = createBrowserRouter([
             {
                 path: "profile",
                 element: <Profile />
+            },
+            {
+                path: "profile/orders",
+                element: <Orders />
+            },
+            {
+                path: "profile/reviews",
+                element: <Reviews />
+            },
+            {
+                path: "profile/addresses",
+                element: <Addresses />
             },
             // SHOP
             {
