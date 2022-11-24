@@ -10,12 +10,42 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState(false);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
 
   async function registerFormSubmitHandler(event) {
     event.preventDefault();
 
-    // TODO: try to register user
-    console.log("registering...");
+    try {
+      const response = await fetch(
+        'https://poster-backendapi.onrender.com/api/users/register',
+          {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                      username: username,
+                      password: password
+              })
+          }
+      )
+      const data = await response.json();
+      console.log("register data:", data);
+
+      if (data.token) {
+          console.log(data.message);
+          setLoggedIn(true);
+          localStorage.setItem("token", data.token);
+          // setProfileData(data.user); // TODO: get user data sent back from /register
+          navigate("/");
+      } else {
+          // problem registering
+          setErrorMessage(data.error);
+      }
+    } catch(error) {
+        console.log(error);
+    }
   }
 
 
@@ -61,6 +91,9 @@ const Register = () => {
 
         <button type='submit' className='login-button'>Register</button>
       </form>
+      {
+        errorMessage ? <p>{errorMessage}</p> : null
+      }
     </div>
   )
 }
