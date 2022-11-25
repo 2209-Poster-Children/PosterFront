@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 import Orders from './components/Profile/Orders';
 import Reviews from './components/Profile/Reviews';
 import Addresses from './components/Profile/Addresses';
+import Settings from './components/Profile/Settings';
 // SHOP
 import Products from './components/Shop/Products';
 import ProductDetails from './components/Shop/ProductDetails';
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "profile/addresses",
                 element: <Addresses />
+            },
+            {
+                path: "profile/settings",
+                element: <Settings />
             },
             // SHOP
             {
