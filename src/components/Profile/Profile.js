@@ -32,35 +32,35 @@ const Profile = () => {
 
                     <div className='profile-cards-container'>
                         <Link to='../cart' className='no-underline'>
-                            <div className='clickable profile-card'>
+                            <div className='profile-card'>
                                 <FaShoppingCart className='profile-card-img' />
                                 <h3>Cart</h3>
                             </div>
                         </Link>
 
                         <Link to='orders' className='no-underline'>
-                            <div className='clickable profile-card'>
+                            <div className='profile-card'>
                                 <FaReceipt className='profile-card-img' />
                                 <h3>Orders</h3>
                             </div>
                         </Link>
 
                         <Link to='reviews' className='no-underline'>
-                            <div className='clickable profile-card'>
+                            <div className='profile-card'>
                                 <AiFillStar className='profile-card-img' />
                                 <h3>Reviews</h3>
                             </div>
                         </Link>
 
                         <Link to='addresses' className='no-underline'>
-                            <div className='clickable profile-card'>
+                            <div className='profile-card'>
                                 <FaAddressCard className='profile-card-img' />
                                 <h3>Addresses</h3>
                             </div>
                         </Link>
 
                         <Link to='settings' className='no-underline'>
-                            <div className='clickable profile-card'>
+                            <div className='profile-card'>
                                 <FiSettings className='profile-card-img' />
                                 <h3>Settings</h3>
                             </div>
