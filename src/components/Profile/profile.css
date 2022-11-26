@@ -372,3 +372,42 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+
+
+
+/* MOVE TO shop.css */
+
+/* New Product */
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    max-width: 400px;
+    padding: 25px 25px;
+    border: 2px solid;
+    border-radius: 10px;
+    font-size: 14pt;
+}
+
+.product-form input {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.product-form textarea {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.product-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form .numeric-input {
+    width: 60px;
+}
