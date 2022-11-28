@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useOutletContext, useNavigate } from "react-router-dom";
 
 import { BiUser, BiLockAlt } from 'react-icons/bi';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import('./profile.css');
 
 const Register = () => {
+
+  const { setProfileData, setLoggedIn } = useOutletContext();
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
