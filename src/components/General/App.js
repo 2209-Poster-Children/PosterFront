@@ -56,7 +56,6 @@ const App = () => {
                 
                     const pData = await response.json();
                     setProductData(pData);
-                    console.log(productData)
 
             } catch (error) {
                 console.log(error)
