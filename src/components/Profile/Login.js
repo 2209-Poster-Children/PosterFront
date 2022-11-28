@@ -34,6 +34,7 @@ const Login = () => {
               })
           }
       )
+
       const data = await response.json();
       console.log("login data: ", data);
       if (data.user) {
