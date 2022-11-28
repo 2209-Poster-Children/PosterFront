@@ -12,6 +12,8 @@ const App = () => {
     const [ profileData, setProfileData ] = useState({});
     const [ loggedIn, setLoggedIn ] = useState(false);
 
+    const [ productData, setProductData ] = useState([]);
+
     useEffect(() => {
         async function checkLoggedIn() {    
             try {
@@ -25,19 +27,44 @@ const App = () => {
                     })
                     
                 const data = await response.json();
+                setProfileData(data);
+
                 console.log("already logged in! user data: ", data); // TODO: fix error
 
                 if (data.username) {
                     setProfileData(data);
                     setLoggedIn(true);
                 }
+
             } catch(error) {
                 console.log(error);
             }
         }
-        checkLoggedIn();
-    }, []);
 
+        checkLoggedIn();
+
+        // Product Fetch
+        async function fetchProductData() {
+            try {
+                const response = await fetch(
+                    'https://poster-backendapi.onrender.com/api/products/', //check URL
+                    {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                
+                    const pData = await response.json();
+                    setProductData(pData);
+                    console.log(productData)
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchProductData();
+
+    }, []);
 
     return (
         <div>
@@ -52,7 +79,11 @@ const App = () => {
 
             <Navbar />
             
-            <Outlet context={{ loggedIn, setLoggedIn, profileData, setProfileData }} />
+            <Outlet context={{ 
+                loggIngObj: [loggedIn, setLoggedIn],
+                profileObj: [productData, setProductData],
+                productObj: [productData, setProductData]
+             }} />
 
             <footer>
                 <h4>Wep App Assembled by DYMI 2209</h4>
