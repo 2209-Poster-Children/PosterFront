@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 
 const Navbar = ({loggedIn}) => {
 
+  console.log(loggedIn)
   return (
     <div className="navbar-return">
       
