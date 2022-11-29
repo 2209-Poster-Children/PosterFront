@@ -5,14 +5,14 @@ import('./profile.css');
 
 const Logout = () => {
 
-  const { setProfileData, setLoggedIn } = useOutletContext();
+  const { userObj: {setLoggedIn, setUserData} } = useOutletContext();
   const navigate = useNavigate();
 
   function logOutUser() {
     console.log("logging out...");
     localStorage.removeItem('token');
-    setProfileData({});
     setLoggedIn(false);
+    setUserData({});
     navigate('/');
   }
 

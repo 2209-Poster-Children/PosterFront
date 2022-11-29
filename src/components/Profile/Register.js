@@ -7,7 +7,8 @@ import('./profile.css');
 
 const Register = () => {
 
-  const { setProfileData, setLoggedIn } = useOutletContext();
+  const { userObj: {setLoggedIn, setUserData} } = useOutletContext();
+
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -41,12 +42,32 @@ const Register = () => {
           console.log(data.message);
           setLoggedIn(true);
           localStorage.setItem("token", data.token);
-          // setProfileData(data.user); // TODO: get user data sent back from /register
-          navigate("/");
+          fetchUserInfo();
       } else {
           // problem registering
           setErrorMessage(data.error);
       }
+    } catch(error) {
+        console.log(error);
+    }
+  }
+
+
+  async function fetchUserInfo() {    
+    try {
+        const response = await fetch(
+            'https://poster-backendapi.onrender.com/api/users/me',
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+            })
+            
+        const data = await response.json();
+        console.log("user data: ", data);
+        setUserData(data);
+        navigate('/');
     } catch(error) {
         console.log(error);
     }

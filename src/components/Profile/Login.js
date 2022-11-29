@@ -7,7 +7,7 @@ import('./profile.css');
 
 const Login = () => {
 
-  const { setProfileData, setLoggedIn } = useOutletContext();
+  const { userObj: {setLoggedIn, setUserData} } = useOutletContext();
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -37,12 +37,12 @@ const Login = () => {
 
       const data = await response.json();
       console.log("login data: ", data);
-      if (data.user) {
+      if (data.token) {
           setLoggedIn(true);
           localStorage.setItem("token", data.token);
           fetchUserInfo();
       } else {
-          setErrorMessage(data.error);
+        setErrorMessage(data.error);
       }
     } catch(error) {
         console.log(error);
@@ -63,7 +63,7 @@ const Login = () => {
             
         const data = await response.json();
         console.log("user data: ", data);
-        setProfileData(data);
+        setUserData(data);
         navigate('/');
     } catch(error) {
         console.log(error);
