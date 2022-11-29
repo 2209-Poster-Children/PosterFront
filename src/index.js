@@ -11,6 +11,7 @@ import Login from './components/Profile/Login';
 import Register from './components/Profile/Register';
 // SHOP
 import Products from './components/Shop/Products';
+import ProductDetails from './components/Shop/ProductDetails';
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "shop",
                 element: <Products />
+            },
+            {
+                path: "shop/:id",
+                element: <ProductDetails />
             }
         ]
     }

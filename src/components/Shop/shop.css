@@ -1,6 +1,6 @@
 /* Styling for Shop Components */
 
-/* Products */
+/* Shop Page */
 
 .products-container {
   display: flex;
@@ -14,9 +14,10 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  max-width: 400px;
 }
 
-.product img {
+.product-img {
   border: 3px solid white;
   margin: auto;
 }
@@ -24,6 +25,21 @@
 .product-info {
   border: 3px solid pink;
   padding-left: 25px;
+}
+
+/* Product Details */
+
+.details-return {
+  border: 3px solid red;
+}
+
+.details-main-container {
+  border: 5px solid purple;
+  display: flex;
+}
+
+.details-more-container {
+  border: 5px solid black;
 }
 
 /* Searchbar */
