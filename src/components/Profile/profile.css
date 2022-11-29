@@ -17,6 +17,7 @@
 
 .input-container {
     display: flex;
+    align-items: center;
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
@@ -33,6 +34,26 @@
     border-radius: 5px;
     font-size: 14pt;
     cursor: pointer;
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(207, 22, 22);
+}
+
+.error-img {
+    background-color: rgb(207, 22, 22);
+    margin-right: 5px;
+}
+
+.error-msg {
+    background-color: rgb(207, 22, 22);
+    flex-grow: 1;
 }
 
 .centered {

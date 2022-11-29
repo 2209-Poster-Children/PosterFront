@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 
-import { BiUser, BiLockAlt } from 'react-icons/bi';
+import { BiUser, BiLockAlt, BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import('./profile.css');
+
+const { loginFetch, userFetch } = require('../../api/users');
 
 const Login = () => {
 
@@ -20,55 +22,18 @@ const Login = () => {
   async function loginFormSubmitHandler(event) {
     event.preventDefault();
 
-    try {
-      const response = await fetch(
-          'https://poster-backendapi.onrender.com/api/users/login',
-          {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                  username: username,
-                  password: password
-              })
-          }
-      )
+    const loginFetchData = await loginFetch(username, password);
 
-      const data = await response.json();
-      console.log("login data: ", data);
-      if (data.token) {
-          setLoggedIn(true);
-          localStorage.setItem("token", data.token);
-          fetchUserInfo();
-      } else {
-        setErrorMessage(data.error);
-      }
-    } catch(error) {
-        console.log(error);
+    if (loginFetchData.token) {
+      setLoggedIn(true);
+      localStorage.setItem("token", loginFetchData.token);
+      const userFetchData = await userFetch();    
+      setUserData(userFetchData);
+      navigate('/');
+    } else {
+        setErrorMessage(loginFetchData.message);
     }
   }
-
-
-  async function fetchUserInfo() {    
-    try {
-        const response = await fetch(
-            'https://poster-backendapi.onrender.com/api/users/me',
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`
-                },
-            })
-            
-        const data = await response.json();
-        console.log("user data: ", data);
-        setUserData(data);
-        navigate('/');
-    } catch(error) {
-        console.log(error);
-    }
-}
 
 
   function togglePasswordVisibility() {
@@ -103,10 +68,15 @@ const Login = () => {
         <button type='submit' className='login-button'>Login</button>
       </form>
 
-      <Link to="/register">Don't have an account? Click here to sign up</Link>
+      <Link to='/register'>Don't have an account? Click here to sign up</Link>
 
       {
-        errorMessage ? <p>{errorMessage}</p> : null
+        errorMessage ? 
+          <div className='error-container'>
+            <BiErrorCircle className='error-img'/>
+            <div className='error-msg'>{errorMessage}</div>
+          </div>
+          : null
       }
 
     </div>

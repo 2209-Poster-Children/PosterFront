@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useOutletContext, useNavigate } from "react-router-dom";
 
-import { BiUser, BiLockAlt } from 'react-icons/bi';
+import { BiUser, BiLockAlt, BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import('./profile.css');
+
+const { registerFetch, userFetch } = require('../../api/users');
 
 const Register = () => {
 
@@ -21,55 +23,18 @@ const Register = () => {
   async function registerFormSubmitHandler(event) {
     event.preventDefault();
 
-    try {
-      const response = await fetch(
-        'https://poster-backendapi.onrender.com/api/users/register',
-          {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                      username: username,
-                      password: password
-              })
-          }
-      )
-      const data = await response.json();
-      console.log("register data:", data);
+    const registerFetchData = await registerFetch(username, password);
 
-      if (data.token) {
-          console.log(data.message);
-          setLoggedIn(true);
-          localStorage.setItem("token", data.token);
-          fetchUserInfo();
-      } else {
-          // problem registering
-          setErrorMessage(data.error);
-      }
-    } catch(error) {
-        console.log(error);
-    }
-  }
-
-
-  async function fetchUserInfo() {    
-    try {
-        const response = await fetch(
-            'https://poster-backendapi.onrender.com/api/users/me',
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`
-                },
-            })
-            
-        const data = await response.json();
-        console.log("user data: ", data);
-        setUserData(data);
-        navigate('/');
-    } catch(error) {
-        console.log(error);
+    if (registerFetchData.token) {
+      console.log(registerFetchData.message);
+      setLoggedIn(true);
+      localStorage.setItem("token", registerFetchData.token);
+      const userFetchData = await userFetch();    
+      setUserData(userFetchData);
+      navigate('/');
+    } else {
+        // problem registering
+        setErrorMessage(registerFetchData.message);
     }
   }
 
@@ -117,7 +82,12 @@ const Register = () => {
         <button type='submit' className='login-button'>Register</button>
       </form>
       {
-        errorMessage ? <p>{errorMessage}</p> : null
+        errorMessage ? 
+          <div className='error-container'>
+            <BiErrorCircle className='error-img'/>
+            <div className='error-msg'>{errorMessage}</div>
+          </div>
+          : null
       }
     </div>
   )
