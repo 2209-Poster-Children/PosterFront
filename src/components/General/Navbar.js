@@ -1,7 +1,8 @@
 import './general.css';
 import { Link} from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({loggedIn}) => {
+
   return (
     <div className="navbar-return">
       
@@ -11,7 +12,14 @@ const Navbar = () => {
 
         <Link to="shop">Shop</Link>
 
-        <Link to="login">Login</Link>
+        {
+          loggedIn ? 
+          (<Link to="profile" id="profile-toggle">
+            Profile</Link>)
+            :
+            (<Link to="login" id="login-toggle">
+              Login</Link>)
+        }
 
         <span>Cart(no path yet)</span>
       
