@@ -9,6 +9,7 @@ import Home from './components/General/Home';
 // PROFILE
 import Login from './components/Profile/Login';
 import Register from './components/Profile/Register';
+import Profile from './components/Profile/Profile';
 // SHOP
 import Products from './components/Shop/Products';
 import ProductDetails from './components/Shop/ProductDetails';
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register />
+            },
+            {
+                path: "profile",
+                element: <Profile />
             },
             // SHOP
             {

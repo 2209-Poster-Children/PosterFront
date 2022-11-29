@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 const ProductDetails = () => {
   const { productObj: [productData, setProductData] } = useOutletContext();
   const [product, setProduct] = useState({});
+ 
   const { id } = useParams();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const ProductDetails = () => {
           </section>
 
           <section className="description-cart">
-            <p>{product.title}</p>
+            <p id="details-name">{product.title}</p>
 
             <p>Price:
               <br/>
@@ -67,14 +68,21 @@ const ProductDetails = () => {
           
             <p>Add to Cart button</p>
             <p>About this item:</p>
-            <p>{product.description}</p>
+            <p id="actual-description">{product.description}</p>
           </section>
         </div>
 
         {/* Bottom */}
         <div className="details-more-container">
-          More products like this: 
-          <p>about 3-5 random posters in similar category i.e. music</p>
+          <div><b>More products like this: </b></div>
+          <div className="more-like-this-container">
+            <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
+            <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
+            <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
+            <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
+            <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
+          </div>
+
         </div>
 
 

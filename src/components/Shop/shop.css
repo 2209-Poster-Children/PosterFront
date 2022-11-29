@@ -29,17 +29,35 @@
 
 /* Product Details */
 
-.details-return {
+/* .details-return {
   border: 3px solid red;
-}
+} */
 
 .details-main-container {
-  border: 5px solid purple;
   display: flex;
+  justify-content: center;
+  padding: 20px;
+  padding-right: 140px;
+}
+
+.description-cart {
+  margin-left: 100px;
+}
+
+#details-name {
+  font-size: xx-large;
+}
+
+#actual-description {
+  border: 3px inset lightblue;
 }
 
 .details-more-container {
-  border: 5px solid black;
+  border: 3px outset lightblue;
+}
+
+.more-like-this-container img {
+  margin: 12px;
 }
 
 /* Searchbar */
