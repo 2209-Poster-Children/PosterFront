@@ -68,7 +68,7 @@ const App = () => {
                 <h1>Poster Children</h1>
             </header>
 
-            <Navbar />
+            <Navbar loggedIn={loggedIn}/>
             
             <Outlet context={{ 
                 userObj: {loggedIn, setLoggedIn, userData, setUserData},
