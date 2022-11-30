@@ -22,7 +22,7 @@ const Navbar = ({loggedIn}) => {
               Login</Link>)
         }
 
-        <span>Cart(no path yet)</span>
+        <Link to="cart">Cart</Link>
       
       </nav>
     </div>
