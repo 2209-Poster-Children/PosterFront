@@ -5,7 +5,7 @@ import { BiUser, BiLockAlt, BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import('./profile.css');
 
-const { registerFetch, userFetch } = require('../../api/users');
+import { registerFetch, userFetch } from '../../api/users';
 
 const Register = () => {
 
