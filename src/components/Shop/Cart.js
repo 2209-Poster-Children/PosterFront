@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import {viewCartFetch} from '../../api/cart';
 
 const Cart = () => {
-  const [{cartData}, setCartData] = useState([]);
+  const [cartData, setCartData] = useState([]);
   
   useEffect(() => {
     async function assignData() {
@@ -12,6 +12,8 @@ const Cart = () => {
     assignData();
   }, []);
   
+
+  console.log(cartData)
   return (
     <div>
       This is where I would hold my red bubble mug. IF. I. HAD. ONE.
