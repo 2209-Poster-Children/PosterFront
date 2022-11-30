@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 const ProductDetails = () => {
   const { productObj: [productData, setProductData] } = useOutletContext();
   const [product, setProduct] = useState({});
+  const [isPhotoClicked, setIsPhotoClicked] = useState(false);
+  const [photoClass, setPhotoClass] = useState("zoom hidden"); 
+  const [mouseOverClass, setMouseOverClass] = useState("")
+  const [mouseOverTipClass, setMouseOverTipClass] = useState("tooltip")
+  const [mouseOverTipTextClass, setMouseOverTipTextClass] = useState("tooltiptext")
  
   const { id } = useParams();
 
@@ -29,14 +34,47 @@ const ProductDetails = () => {
 
   }, []);
 
+  const zoomInSome = () => {
+    if(!isPhotoClicked) {
+      setPhotoClass("zoom visible")
+    } else {
+      setPhotoClass("zoom hidden")
+    }
+    setIsPhotoClicked(!isPhotoClicked)
+  }
+
+  function handleMouseOver(event) {
+    setMouseOverClass("mouseover")
+    setMouseOverTipClass("tooltip mouseover-tip")
+    setMouseOverTipTextClass("tooltiptext mouseover-tip")    
+  }
+
+  function handleMouseExit(event) {
+    setMouseOverClass("")
+    setMouseOverTipClass("tooltip")
+    setMouseOverTipTextClass("tooltiptext")
+  }
+
   if (product.id) {
     return (
       <div className="details-return">
         {/* top */}
         <div className="details-main-container">
+
+          {/* on hover, magnifying icon */}
+          {/* on click, zoom */}
+
           <section className="image">
-            <img src={product.imageUrl} alt={product.imageAlt} height="600"/>
+            <img className={mouseOverClass} onMouseEnter={handleMouseOver} onMouseLeave={handleMouseExit} id="details-img-default" src={product.imageUrl} alt={product.imageAlt} width="400" onClick={zoomInSome}/>
+            <div className={mouseOverTipClass}>
+              <span className={mouseOverTipTextClass} style={{visibility: mouseOverTipTextClass == "tooltiptext mouseover-tip" ? "visible" : "hidden"}}>Enlarge Image</span>
+            </div>
           </section>
+
+          {/* zoom in image */}
+          <div>
+            <img className={photoClass} src={product.imageUrl} alt={product.imageAlt} width="100%" onClick={zoomInSome}/>
+          </div>
 
           <section className="description-cart">
             <p id="details-name">{product.title}</p>
@@ -60,13 +98,15 @@ const ProductDetails = () => {
 
             <br />
 
-            <select>
+            <select id="details-dropdown">
               <option value="all">White Border</option>
               <option value="Movies">Black Border</option>  
               <option value="music">No Border</option>
             </select> 
-          
-            <p>Add to Cart button</p>
+
+            <br/>
+            <br />
+            <button id="add-to-cart">Add to Cart</button>
             <p>About this item:</p>
             <p id="actual-description">{product.description}</p>
           </section>
@@ -74,7 +114,7 @@ const ProductDetails = () => {
 
         {/* Bottom */}
         <div className="details-more-container">
-          <div><b>More products like this: </b></div>
+          <div><b>More products *exactly* like this: </b></div>
           <div className="more-like-this-container">
             <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
             <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
