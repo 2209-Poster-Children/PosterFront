@@ -20,7 +20,7 @@ const App = () => {
         async function checkforUser() {
             const userFetchData = await userFetch();
             if (userFetchData.user) {
-                console.log("already logged in! userFetchData: ", data);
+                console.log("already logged in! data: ", userFetchData);
                 setUserData(userFetchData);
                 setLoggedIn(true);
             } else console.log('not already logged in...');
