@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 // SHOP
 import Products from './components/Shop/Products';
 import ProductDetails from './components/Shop/ProductDetails';
+import Cart from './components/Shop/Cart';
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: "shop/:id",
                 element: <ProductDetails />
+            },
+            {
+                path: "cart",
+                element: <Cart />
             }
         ]
     }
