@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useOutletContext, useNavigate } from "react-router-dom";
 
 import { BiUser, BiLockAlt, BiErrorCircle } from 'react-icons/bi';
@@ -16,12 +16,19 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
 
 
   async function registerFormSubmitHandler(event) {
     event.preventDefault();
+
+    if (password != confirmPassword) {
+      setErrorMessage("Confirmed password DOES NOT MATCH password");
+      return;
+    }
 
     const registerFetchData = await registerFetch(username, password);
 
@@ -43,6 +50,31 @@ const Register = () => {
     setPasswordVisibility(!passwordVisibility);
     let passwordType = document.getElementById("passwordInput");
     passwordType.type === "password" ?  passwordType.type = "text" : passwordType.type = "password";
+  }
+
+
+  function toggleConfirmPasswordVisibility() {
+    setConfirmPasswordVisibility(!confirmPasswordVisibility);
+    let passwordType = document.getElementById("confirmPasswordInput");
+    passwordType.type === "password" ?  passwordType.type = "text" : passwordType.type = "password";
+  }
+
+
+  useEffect(() => {
+    checkPasswordsMatch();
+  }, [confirmPassword])
+
+
+  function checkPasswordsMatch() {
+    let confirmPasswordInputContainer = document.getElementById("confirmPasswordInputContainer");
+
+    if (confirmPassword !== password) {
+      confirmPasswordInputContainer.classList.add('passwords-different');
+      setErrorMessage("Confirmed password does not match password");
+    } else {
+      confirmPasswordInputContainer.classList.remove('passwords-different');
+      setErrorMessage("");
+    }
   }
 
 
@@ -68,16 +100,16 @@ const Register = () => {
 
         <br />
 
-        {/* <label>Confirm New Password:</label>
-        <div className='input-container'>
+        <label>Confirm New Password:</label>
+        <div className='input-container' id='confirmPasswordInputContainer'>
           <BiLockAlt />
-          <input type='password' value={password} id='passwordInput' onChange={(event) => setPassword(event.target.value)}></input>
+          <input type='password' value={confirmPassword} id='confirmPasswordInput' onChange={(event) => setConfirmPassword(event.target.value)}></input>
           {
-            passwordVisibility ? <AiOutlineEye onClick={togglePasswordVisibility}/> : <AiOutlineEyeInvisible onClick={togglePasswordVisibility}/>
+            confirmPasswordVisibility ? <AiOutlineEye onClick={toggleConfirmPasswordVisibility} className='clickable'/> : <AiOutlineEyeInvisible onClick={toggleConfirmPasswordVisibility} className='clickable'/>
           }
         </div>
 
-        <br /> */}
+        <br />
 
         <button type='submit' className='login-button'>Register</button>
       </form>
