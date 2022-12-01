@@ -50,6 +50,8 @@ const App = () => {
 
     }, []);
 
+    // fetch cart data? state variable to be passed around as context separate
+    // active cart from the userobj
     return (
         <div>
             <header>

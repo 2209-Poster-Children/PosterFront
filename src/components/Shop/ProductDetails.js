@@ -1,5 +1,6 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { addToCartFetch } from '../../api/cart';
 
 const ProductDetails = () => {
   const { productObj: [productData, setProductData] } = useOutletContext();
@@ -9,10 +10,11 @@ const ProductDetails = () => {
   const [mouseOverClass, setMouseOverClass] = useState("")
   const [mouseOverTipClass, setMouseOverTipClass] = useState("tooltip")
   const [mouseOverTipTextClass, setMouseOverTipTextClass] = useState("tooltiptext")
- 
+  const {userObj: {userData}} = useOutletContext()
   const { id } = useParams();
 
   useEffect(() => {
+    console.log(userData);
     async function getIndivProduct() {
       try {
         const response = await fetch(
@@ -33,6 +35,16 @@ const ProductDetails = () => {
     getIndivProduct();
 
   }, []);
+
+  // sorry drew, I'm writing some code in your code today.
+  async function addProductToCart(event){
+    event.preventDefault();
+    //write quantity functional stuff later (usestate)
+    const quantity = 1;
+    const addCartFetchedData = await addToCartFetch(id,quantity);
+    console.log(addCartFetchedData);
+  }
+
 
   const zoomInSome = () => {
     if(!isPhotoClicked) {
@@ -106,7 +118,9 @@ const ProductDetails = () => {
 
             <br/>
             <br />
-            <button id="add-to-cart">Add to Cart</button>
+            <form onSubmit={addProductToCart}>
+            <button type="submit" id="add-to-cart">Add to Cart</button>
+            </form>
             <p>About this item:</p>
             <p id="actual-description">{product.description}</p>
           </section>
