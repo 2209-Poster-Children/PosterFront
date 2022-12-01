@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import {viewCartFetch} from '../../api/cart';
 
 const Cart = () => {
   const [cartData, setCartData] = useState([]);
+  const { userObj: {userData} } = useOutletContext();
   
   useEffect(() => {
     async function assignData() {
@@ -11,41 +13,62 @@ const Cart = () => {
     }
     assignData();
   }, []);
-  
 
-  console.log(cartData)
+  console.log(cartData.totalPrice)
   return (
-    <div>
-      This is where I would hold my red bubble mug. IF. I. HAD. ONE.
-      <br />
-      This is my cart. This is my (water) gun. This is for shopping. This is for fun.
+    <div className="cart-return">
 
-    Shopping Cart
+    <div className="cart-item-container">
+      <p id="cart-username">{userData.user.username}'s Shopping Cart</p>
+      {
+        cartData.products && cartData.products.length ? cartData.products.map((product, idx) => {
+          return <div className="cart-item" key={idx}>
 
-    small poster preview, name, quantity, item price
-    (FREE with this purchase! Buyer's Remorse) 
+            <div className="cart-image">
+              <span><img src={product.imageUrl} alt={product.imageAlt} height="150" /></span>
+            </div>
 
-    maybe steal from https://www.adsrsounds.com/cart/
-    
-    Look at this{console.log('fuck fuck fuck fuck fuck fuck fuck', cartData)}
 
-    {
-      cartData && cartData.length ? cartData.map((cart, idx) => {
-        return <div className="cart-item" key={idx}>
+            <div className="cart-details">
+              <span>{product.title}
 
-          <span><img src={cart.products.imageUrl} alt={cart.products.imageAlt} height="150" /></span>
-          <span>{cart.products.title}</span>
-          {/* {console.log(cart)} */}
-          <span>{cart.products.quantity}</span>
-          <span>{cart.products.subtotal}</span>
-          <span>{cart.totalPrice}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              quantity: &nbsp;
+                <select>
+                  <option value={product.quantity}>
+                    {product.quantity}
+                  </option>
+                </select>
+              </span>
 
-        </div>
-      }) : <p>No items in cart yet.</p>
-    }
+              <span>${product.subtotal}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="cart-remove">X</button></span>
+
+            </div>
+
+          </div>
+        }) : <p>No items in cart yet.</p>
+      }
+      </div>
+      <div className="cart-checkout-container">
+        Deliver to: &nbsp;
+        <select>
+          <option>Select Address</option>
+        </select>
+        <br />
+        <span>Cart Subtotal: ${cartData.totalPrice}</span>
+        <br />
+        <span>Est. Taxes </span>
+        <br />
+        <span>Est. Total after taxes</span>
+        <br />
+
+        <button id="cart-checkout-bttn">Checkout</button>
+      </div>
 
     </div>
   )
+
 }
 
 export default Cart;

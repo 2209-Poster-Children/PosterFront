@@ -3,7 +3,7 @@
 // async function addToCartFetch()
 
 export async function viewCartFetch() {
-  console.log('fuck carts and fuck render.com')
+  console.log('starting get carts starting get carts')
   try {
     const response = await fetch(
       'https://poster-backendapi.onrender.com/api/cart/',
@@ -14,9 +14,9 @@ export async function viewCartFetch() {
         }
       })
 
-      console.log('carts and carts and carts and carts')
+      console.log('finished get carts finished get carts')
       const cData = await response.json();
-      return cData;
+      return cData[0];
 
   } catch (error) {
     console.log(error)
