@@ -1,54 +1,65 @@
-import { useState, useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
-import {viewCartFetch} from '../../api/cart';
+import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
+import { viewCartFetch } from "../../api/cart";
 
 const Cart = () => {
+  // Matt: you may want cartData to be stored in context instead of locally
+  // in case you need to access it from other components
   const [cartData, setCartData] = useState([]);
-  const { userObj: {userData} } = useOutletContext();
-  
+  const {
+    userObj: { userData },
+  } = useOutletContext();
+
   useEffect(() => {
     async function assignData() {
       const cartFetchData = await viewCartFetch();
-      setCartData(cartFetchData)
+      setCartData(cartFetchData);
     }
     assignData();
   }, []);
 
-  console.log(cartData.totalPrice)
+  console.log(cartData.totalPrice);
   return (
     <div className="cart-return">
+      <div className="cart-item-container">
+        <p id="cart-username">{userData.user.username}'s Shopping Cart</p>
+        {cartData.products && cartData.products.length ? (
+          cartData.products.map((product, idx) => {
+            return (
+              <div className="cart-item" key={idx}>
+                <div className="cart-image">
+                  <span>
+                    <img
+                      src={product.imageUrl}
+                      alt={product.imageAlt}
+                      height="150"
+                    />
+                  </span>
+                </div>
 
-    <div className="cart-item-container">
-      <p id="cart-username">{userData.user.username}'s Shopping Cart</p>
-      {
-        cartData.products && cartData.products.length ? cartData.products.map((product, idx) => {
-          return <div className="cart-item" key={idx}>
+                <div className="cart-details">
+                  <span>
+                    {product.title}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quantity: &nbsp;
+                    <select>
+                      <option value={product.quantity}>
+                        {product.quantity}
+                      </option>
+                    </select>
+                  </span>
 
-            <div className="cart-image">
-              <span><img src={product.imageUrl} alt={product.imageAlt} height="150" /></span>
-            </div>
-
-
-            <div className="cart-details">
-              <span>{product.title}
-
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              quantity: &nbsp;
-                <select>
-                  <option value={product.quantity}>
-                    {product.quantity}
-                  </option>
-                </select>
-              </span>
-
-              <span>${product.subtotal}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="cart-remove">X</button></span>
-
-            </div>
-
-          </div>
-        }) : <p>No items in cart yet.</p>
-      }
+                  <span>
+                    ${product.subtotal}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button className="cart-remove">X</button>
+                  </span>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <p>No items in cart yet.</p>
+        )}
       </div>
       <div className="cart-checkout-container">
         Deliver to: &nbsp;
@@ -62,13 +73,10 @@ const Cart = () => {
         <br />
         <span>Est. Total after taxes</span>
         <br />
-
         <button id="cart-checkout-bttn">Checkout</button>
       </div>
-
     </div>
-  )
-
-}
+  );
+};
 
 export default Cart;
