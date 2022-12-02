@@ -7,12 +7,13 @@ import '../index.css';
 import './general.css';
 
 import { userFetch } from '../../api/users';
+import {viewCartFetch} from '../../api/cart';
 
 const App = () => {
 
     const [ userData, setUserData ] = useState({});
     const [ loggedIn, setLoggedIn ] = useState(false);
-
+    const [ cartData, setCartData] = useState({});
     const [ productData, setProductData ] = useState([]);
 
     useEffect(() => {
@@ -23,6 +24,9 @@ const App = () => {
                 console.log("already logged in! data: ", userFetchData);
                 setUserData(userFetchData);
                 setLoggedIn(true);
+                const cart = await viewCartFetch()
+                console.log(cart);
+                setCartData(cart);
             } else console.log('not already logged in...');
         }
         checkforUser();
@@ -49,7 +53,8 @@ const App = () => {
         fetchProductData();
 
     }, []);
-
+    // fetch cart data? state variable to be passed around as context separate
+    // active cart from the userobj
     return (
         <div>
             <header>
@@ -60,7 +65,8 @@ const App = () => {
             
             <Outlet context={{ 
                 userObj: {loggedIn, setLoggedIn, userData, setUserData},
-                productObj: [productData, setProductData]
+                productObj: [productData, setProductData],
+                cartObj: [cartData, setCartData]
             }} />
 
             <footer>
