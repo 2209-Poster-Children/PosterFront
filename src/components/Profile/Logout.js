@@ -1,6 +1,8 @@
 import React from 'react';
 import { useOutletContext, useNavigate } from "react-router-dom";
 
+import { FiLogOut } from 'react-icons/fi';
+
 import('./profile.css');
 
 const Logout = () => {
@@ -17,8 +19,9 @@ const Logout = () => {
   }
 
   return (
-    <div>
-      <button onClick={logOutUser} className='login-button'>Logout</button>
+    <div className='clickable profile-card' onClick={logOutUser}>
+      <FiLogOut className='profile-card-img' />
+      <h3>Logout</h3>
     </div>
   )
 }
