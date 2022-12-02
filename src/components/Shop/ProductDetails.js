@@ -1,9 +1,11 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { addToCartFetch } from '../../api/cart';
+import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
 
 const ProductDetails = () => {
   const { productObj: [productData, setProductData] } = useOutletContext();
+  const { cartObj: [cartData, setCartData]}= useOutletContext();
+  const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
   const [isPhotoClicked, setIsPhotoClicked] = useState(false);
   const [photoClass, setPhotoClass] = useState("zoom hidden"); 
@@ -36,15 +38,35 @@ const ProductDetails = () => {
 
   }, []);
 
-  // sorry drew, I'm writing some code in your code today.
   async function addProductToCart(event){
     event.preventDefault();
     //write quantity functional stuff later (usestate)
-    const quantity = 1;
-    const addCartFetchedData = await addToCartFetch(id,quantity);
-    console.log(addCartFetchedData);
+    const quantity = 4;
+    console.log(cartData);
+    if(safeCheck(cartData, id)){
+      const addQuantityFetchedData = await addQuantityFetch(id,quantity);
+      console.log(addQuantityFetchedData);
+    }else{
+      const addCartFetchedData = await addToCartFetch(id,quantity);
+      console.log(addCartFetchedData);
+    }
+      const fetchCart = await viewCartFetch();
+      setCartData(fetchCart);
   }
 
+  //this function will check if a cart already has a product id and instead push a quantity instead of 
+  // trying to add to cart.
+  const safeCheck = (cart,productId) =>{
+    let checker = false;
+    cart.products.forEach((product)=>{
+      if(product.productId == productId){
+        checker = true
+      }
+    })
+    console.log("safeCheck  ", checker);
+    return checker;
+  }
+  
 
   const zoomInSome = () => {
     if(!isPhotoClicked) {
@@ -119,7 +141,8 @@ const ProductDetails = () => {
             <br/>
             <br />
             <form onSubmit={addProductToCart}>
-            <button type="submit" id="add-to-cart">Add to Cart</button>
+              <input type="number" value={quantity} min="1" max="10" placeholder="1"></input>
+              <button type="submit" id="add-to-cart">Add to Cart</button>
             </form>
             <p>About this item:</p>
             <p id="actual-description">{product.description}</p>

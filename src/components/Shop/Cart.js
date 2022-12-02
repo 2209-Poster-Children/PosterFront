@@ -3,23 +3,15 @@ import { useOutletContext } from 'react-router-dom'
 import {viewCartFetch} from '../../api/cart';
 
 const Cart = () => {
-  const [cartData, setCartData] = useState([]);
+  const {cartObj:[cartData, setCartData]} = useOutletContext();
   const { userObj: {userData} } = useOutletContext();
-  
-  useEffect(() => {
-    async function assignData() {
-      const cartFetchData = await viewCartFetch();
-      setCartData(cartFetchData)
-    }
-    assignData();
-  }, []);
 
-  console.log(cartData.totalPrice)
+  console.log(cartData)
   return (
     <div className="cart-return">
 
     <div className="cart-item-container">
-      <p id="cart-username">{userData.user.username}'s Shopping Cart</p>
+      <p id="cart-username">{userData?.user?.username}'s Shopping Cart</p>
       {
         cartData.products && cartData.products.length ? cartData.products.map((product, idx) => {
           return <div className="cart-item" key={idx}>
