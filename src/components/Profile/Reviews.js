@@ -4,6 +4,7 @@ import {  useOutletContext } from "react-router-dom";
 import { AiFillStar } from 'react-icons/ai';
 import('./profile.css');
 
+import Review from './Review';
 import ProfileNavbar from './ProfileNavbar';
 
 
@@ -27,12 +28,16 @@ const Reviews = () => {
                         <AiFillStar className='icon-bubble' />
                         <h2>{userData.user.username}'s reviews</h2>
                     </div>
-
-                    {/* map through reviews */}
+                {
+                    userData.reviews.length ? userData.reviews.map((review, idx) => {
+                            return <Review review={review} idx={idx} key={idx} />
+                        }) : <div>No Reviews to display</div>
+                    }
                 </div>
             }
         </div>
     )
 }
+
 
 export default Reviews;

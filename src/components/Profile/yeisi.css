@@ -1,0 +1,71 @@
+.review-container{
+    border: 2px darkcyan;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: 19px;
+    border-radius: 10px;
+    background-color: darkcyan;  
+    margin-top: 20px;  
+
+}
+.star{
+    background-color: darkcyan;
+    font-size: 80px;
+    color: white;
+    margin-top:10px;
+    margin-left: 25px;
+}
+.review-title{
+    background-color: darkcyan;
+    color:rgb(6, 6, 77);
+    font-weight: bolder;
+}
+.review-element{
+    font-size: 18px;
+    text-align: center;
+    color: rgb(6, 6, 77);
+;
+}
+.review-label{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: darkcyan;
+    color: rgb(6, 6, 77);
+    font-weight: bolder;
+}
+.review-value{
+    background-color:darkcyan;
+    margin-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.image-container{
+    background-color: darkcyan;
+    align-items: center;
+}
+.shakiraimage{
+    height:280px;
+    width: 280px;
+    margin-left: 575px;
+    border-radius: 1400px;
+
+}
+/* .cantin {
+            margin-left: 65px;
+
+} */
+
+
+.add-review{
+    background-color: darkcyan;
+    color:white;
+    font-size: 35px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    font-weight: bolder;
+    border-radius: 80px;
+
+} 
+
+
