@@ -1,11 +1,18 @@
 import './shop.css';
 import Searchbar from './Searchbar';
 import { useOutletContext, Link } from 'react-router-dom';
+// import { useQuery } from 'react-query'
+// import ReactDOM from 'react-dom';
+// import ReactPaginate from 'react-paginate';
 
 const Products = () => {
 
   const { productObj: [productData, setProductData]} = useOutletContext();
   const productsByRecent = [...productData].reverse();
+  const {paginateObj: {page, setPage, count, setCount}} = useOutletContext();
+
+  // clear to relocate fetch products into this component, or better yet
+  // relocate product fetches to api folder and import into this comopnent
 
   return (
     <div>
