@@ -4,6 +4,19 @@
     align-items: center;
 }
 
+.horiz-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.horiz-container {
+    display: flex;
+    align-items: center;
+}
+
+/* LOGIN/REGISTER FORMS */
+
 .user-form {
     display: flex;
     flex-direction: column;
@@ -21,6 +34,10 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
+}
+
+.passwords-different {
+    border-color: rgb(207, 22, 22);
 }
 
 .user-form input {
@@ -61,5 +78,176 @@
 }
 
 .clickable {
+    cursor: pointer;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.icon-bubble {
+    font-size: 2em;
+    padding: 5px;
+}
+
+/* PROFILE */
+
+.profile-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 700px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.profile-card-img {
+    font-size: 5em;
+    margin-top: 20px;
+}
+
+.profile-navbar-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.profile-navbar {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+}
+
+.profile-navbar-icon {
+    font-size: 2em;
+}
+
+/* ADDRESSES */
+
+.address-container {
+    display: flex;
+    align-items: flex-end;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: 14pt;
+}
+
+.address-element {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    margin: 5px;
+    border: 2px solid rgb(32, 32, 102);
+    border-radius: 5px;
+    background-color: rgb(32, 32, 102);
+}
+
+.address-label {
+    color: lightcyan;
+    font-size: 10pt;
+    background-color: rgb(32, 32, 102);;
+}
+
+.address-value {
+    font-weight: bold;
+    background-color: rgb(32, 32, 102);
+}
+
+.address-number {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: darkcyan;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+}
+
+.primary-address {
+    background-color: darkcyan;
+}
+
+.new-address-button {
+    margin: 20px;
+    padding: 5px;
+    border: 2px solid darkcyan;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-address-button-label {
+    padding: 5px;
+    font-weight: bold;
+    color: darkcyan;
+}
+
+.new-address-button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 2em;
+    padding: 2px;
+    background-color: darkcyan;
+    color: white;
+}
+
+.address-form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    margin-bottom: 50px;
+    width: 350px;
+    padding: 25px 25px;
+    border: 2px solid;
+    border-radius: 10px;
+    font-size: 14pt;
+}
+
+.address-form input {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.address-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-state-select {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.address-zipcode-input {
+    max-width: 60px;
+}
+
+.add-address-button {
+    padding: 5px 25px;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: 14pt;
+    font-weight: bold;
     cursor: pointer;
 }
