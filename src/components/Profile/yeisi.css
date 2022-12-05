@@ -43,11 +43,12 @@
     background-color: darkcyan;
     align-items: center;
 }
-.shakiraimage{
+.image{
     height:280px;
     width: 280px;
     margin-left: 575px;
     border-radius: 1400px;
+    margin:auto;
 
 }
 /* .cantin {

@@ -24,7 +24,8 @@ return (
 
             
             <div class="image-container">
-            <div img src="https://phantom-marca.unidadeditorial.es/9539821a6a594eca33bde1994c03ecd6/resize/1320/f/jpg/assets/multimedia/imagenes/2021/09/05/16308252543285.jpg"class="shakiraimage"></div>
+                
+            <div img src="https://phantom-marca.unidadeditorial.es/9539821a6a594eca33bde1994c03ecd6/resize/1320/f/jpg/assets/multimedia/imagenes/2021/09/05/16308252543285.jpg"class="image"height='200'></div>
         
             </div>
 
