@@ -16,6 +16,9 @@ const App = () => {
     const [ cartData, setCartData] = useState({});
     const [ productData, setProductData ] = useState([]);
 
+    const [page, setPage] = useState(1);
+    const [count, setCount] = useState(1);
+
     useEffect(() => {
         // check for local storage token and set user data with a user fetch
         async function checkforUser() {
@@ -40,7 +43,11 @@ const App = () => {
                     {
                         headers: {
                             "Content-Type": "application/json"
-                        }
+                        },
+                        // body: JSON.stringify({
+                        //     page: page,
+                        //     count: count
+                        // })
                     })
                 
                     const pData = await response.json();
@@ -66,7 +73,8 @@ const App = () => {
             <Outlet context={{ 
                 userObj: {loggedIn, setLoggedIn, userData, setUserData},
                 productObj: [productData, setProductData],
-                cartObj: [cartData, setCartData]
+                cartObj: [cartData, setCartData],
+                paginateObj: {page, setPage, count, setCount}
             }} />
 
             <footer>

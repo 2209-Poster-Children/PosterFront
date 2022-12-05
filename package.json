@@ -14,7 +14,12 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
+    "react-icons": "^4.6.0",
+    "react-paginate": "^8.1.4",
+=======
     "react-icons": "^4.7.1",
+>>>>>>> 7e6e6b9cc6fcc470ae51697dbc271adf61028a45
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1"
