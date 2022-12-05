@@ -4,15 +4,15 @@ import { AiOutlineStar } from 'react-icons/ai';
 import('./profile.css');
 
 const Address = ({address, idx}) => {
-    console.log(address);
-    console.log("idx", idx);
 
 
     return (
         <div>
             <div className='address-container'>
                 {
-                    address.primaryAddress ? <div className='address-number'><AiOutlineStar className='primary-address' /></div> : <div className='address-number'>{idx + 1}</div>
+                    // todo: maybe add back in after updating primaryAddress stuff
+                    // address.primaryAddress ? <div className='address-number'><AiOutlineStar className='primary-address' /></div> : <div className='address-number'>{idx + 1}</div>
+                    <div className='address-number'>{idx + 1}</div>
                 }
                 
                 <div className='address-element'>
