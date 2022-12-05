@@ -4,6 +4,7 @@ import { Link, useOutletContext } from "react-router-dom";
 
 import { FaShoppingCart, FaReceipt, FaAddressCard } from 'react-icons/fa';
 import { AiFillStar } from 'react-icons/ai';
+import { FiSettings } from 'react-icons/fi';
 
 import Logout from './Logout';
 
@@ -30,6 +31,13 @@ const Profile = () => {
                     }
 
                     <div className='profile-cards-container'>
+                        <Link to='../cart' className='no-underline'>
+                            <div className='clickable profile-card'>
+                                <FaShoppingCart className='profile-card-img' />
+                                <h3>Cart</h3>
+                            </div>
+                        </Link>
+
                         <Link to='orders' className='no-underline'>
                             <div className='clickable profile-card'>
                                 <FaReceipt className='profile-card-img' />
@@ -51,10 +59,10 @@ const Profile = () => {
                             </div>
                         </Link>
 
-                        <Link to='../cart' className='no-underline'>
+                        <Link to='settings' className='no-underline'>
                             <div className='clickable profile-card'>
-                                <FaShoppingCart className='profile-card-img' />
-                                <h3>Cart</h3>
+                                <FiSettings className='profile-card-img' />
+                                <h3>Settings</h3>
                             </div>
                         </Link>
 
