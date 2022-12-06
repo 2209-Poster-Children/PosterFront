@@ -137,16 +137,19 @@
 .address-container {
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
     margin: 5px;
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
     font-size: 14pt;
+    width: 420px;
 }
 
 .address-element {
     display: flex;
     flex-direction: column;
+    align-self: center;
     padding: 2px;
     margin: 5px;
     border: 2px solid rgb(32, 32, 102);
@@ -186,8 +189,8 @@
     align-items: center;
     background: darkcyan;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     font-weight: bold;
 }
 
@@ -201,6 +204,7 @@
     border: 2px solid darkcyan;
     border-radius: 5px;
     cursor: pointer;
+    background-color: lightgray;
 }
 
 .new-address-button-label {
@@ -219,7 +223,7 @@
     font-size: 2em;
     padding: 2px;
     background-color: darkcyan;
-    color: white;
+    color: lightgray;
 }
 
 .address-form {
@@ -232,6 +236,12 @@
     border: 2px solid;
     border-radius: 10px;
     font-size: 14pt;
+    background-color: gray;
+    /* color: #551a8b; */
+}
+
+.light-mode .address-form {
+    background-color: whitesmoke;
 }
 
 .address-form input {
@@ -240,6 +250,11 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
+    background-color: lightgray;
+}
+
+.light-mode .address-form input {
+    background-color: white;
 }
 
 .address-input-container {
@@ -251,6 +266,11 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
+    background-color: lightgray;
+}
+
+.light-mode .address-state-select {
+    background-color: white;
 }
 
 .address-zipcode-input {

@@ -1,13 +1,8 @@
 /* Styling for Universal Components */
 
-/* * {
+body {
   color: lightblue;
   background-color: rgb(6, 6, 77);
-} */
-
-body {
-  color: lightgray;
-  background-color: black;
 }
 
 .light-mode {

@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 
 import { FaAddressCard } from 'react-icons/fa';
 import { MdAddCircle } from 'react-icons/md';
 import('./profile.css');
+
+import { getAddressesFetch } from '../../api/address';
 
 import Address from './Address';
 import ProfileNavbar from './ProfileNavbar';
@@ -14,10 +16,19 @@ const Addresses = () => {
 
     const { userObj: { loggedIn, userData } } = useOutletContext();
 
+    const [addresses, setAddresses] = useState([]);
+
     const [toggleNewAddressForm, setToggleNewAddressForm] = useState(false);
     const [buttonLabel, setButtonLabel] = useState('Add New');
     const [buttonSign, setButtonSign] = useState('+');
 
+    useEffect(() => {
+        async function fetchAddresses() {
+            const addressesFetchData = await getAddressesFetch();
+            if (addressesFetchData.allAddresses) setAddresses(addressesFetchData.allAddresses);
+        }
+        fetchAddresses();
+    }, []);
 
     function handleToggleNewAddressForm() {
         setToggleNewAddressForm(!toggleNewAddressForm);
@@ -54,11 +65,11 @@ const Addresses = () => {
                     </div>
 
                     {
-                        toggleNewAddressForm ? <NewAddress handleToggleNewAddressForm={handleToggleNewAddressForm} /> : null
+                        toggleNewAddressForm ? <NewAddress handleToggleNewAddressForm={handleToggleNewAddressForm} setAddresses={setAddresses} /> : null
                     }
 
                     {
-                        userData.addresses.length ? userData.addresses.map((address, idx) => {
+                        addresses.length ? addresses.map((address, idx) => {
                             return <Address address={address} idx={idx} key={idx} />
                         }) : <div>No addresses to display</div>
                     }

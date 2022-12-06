@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 
 import { newAddressFetch, getAddressesFetch } from '../../api/address';
-import { userFetch } from '../../api/users';
 
-const NewAddress = ({handleToggleNewAddressForm}) => {
 
-    const { userObj: { userData, setUserData } } = useOutletContext();
+const NewAddress = ({handleToggleNewAddressForm, setAddresses}) => {
+
+    const { userObj: { userData } } = useOutletContext();
 
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
@@ -24,13 +24,12 @@ const NewAddress = ({handleToggleNewAddressForm}) => {
         const newAddressFetchData = await newAddressFetch(userData.user.id, address, city, state, zipcode, primaryAddress);
         if (newAddressFetchData.address) {
             handleToggleNewAddressForm();
-            // const getAddressesFetchData = await getAddressesFetch();
-            // console.log("getAddressesFetchData", getAddressesFetchData);
-            const userFetchData = await userFetch();   
-            setUserData(userFetchData);
+            const addressesFetchData = await getAddressesFetch();
+            console.log("addressesFetchData", addressesFetchData);
+            if (addressesFetchData.allAddresses) setAddresses(addressesFetchData.allAddresses);
         }
-
     }
+
 
     return (
         <div className='vert-flex-container'>
