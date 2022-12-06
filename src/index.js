@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
 // GENERAL
 import App from './components/General/App';
@@ -59,6 +59,10 @@ const router = createBrowserRouter([
                 element: <Settings />
             },
             // SHOP
+            {
+                path: "shop",
+                element: <Navigate to="page/1" />
+            },
             {
                 path: "shop/page/:page",
                 element: <Products />
