@@ -60,11 +60,11 @@ const router = createBrowserRouter([
             },
             // SHOP
             {
-                path: "shop",
+                path: "shop/page/:page",
                 element: <Products />
             },
             {
-                path: "shop/:id",
+                path: "shop/item/:id",
                 element: <ProductDetails />
             },
             {
