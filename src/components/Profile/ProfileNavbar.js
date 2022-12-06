@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
-import { FaShoppingCart, FaReceipt, FaAddressCard } from 'react-icons/fa';
+import { FaReceipt, FaAddressCard } from 'react-icons/fa';
+import { FiSettings } from 'react-icons/fi';
 
 
 const ProfileNavbar = ({ activePage }) => {
-    console.log(activePage);
 
     return (
         <div className='profile-navbar-container'>
@@ -38,6 +38,14 @@ const ProfileNavbar = ({ activePage }) => {
                         <FaAddressCard className='profile-navbar-icon' />
                     </Link>
                 }
+
+                {
+                    activePage === 'settings' ? null :
+                    <Link to="../profile/settings">
+                        <FiSettings className='profile-navbar-icon' />
+                    </Link> 
+                }
+
             </nav>
         </div>
     )
