@@ -1,8 +1,7 @@
 export async function fetchProductData(page, count) {
   try {
       const response = await fetch(
-            `http://localhost:3001/api/products?page=${page}&count=${count}`,
-        //   `https://poster-backendapi.onrender.com/api/products?page=${page}&count=${count}`, 
+          `https://poster-backendapi.onrender.com/api/products?page=${page}&count=${count}`, 
           {
               headers: {
                   "Content-Type": "application/json"
