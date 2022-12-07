@@ -41,7 +41,6 @@ const ProductDetails = () => {
   async function addProductToCart(event){
     event.preventDefault();
     //write quantity functional stuff later (usestate)
-    const quantity = 4;
     console.log(cartData);
     if(safeCheck(cartData, id)){
       const addQuantityFetchedData = await addQuantityFetch(id,quantity);
@@ -89,6 +88,10 @@ const ProductDetails = () => {
     setMouseOverTipTextClass("tooltiptext")
   }
 
+  function handleQuantityChange(event){
+    setQuantity(event.target.value)
+  }
+  
   if (product.id) {
     return (
       <div className="details-return">
@@ -141,7 +144,7 @@ const ProductDetails = () => {
             <br/>
             <br />
             <form onSubmit={addProductToCart}>
-              <input type="number" value={quantity} min="1" max="10" placeholder="1"></input>
+              <input type="number" value={quantity} min="1" max="10" placeholder="1" onChange={handleQuantityChange}></input>
               <button type="submit" id="add-to-cart">Add to Cart</button>
             </form>
             <p>About this item:</p>
@@ -159,10 +162,7 @@ const ProductDetails = () => {
             <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
             <img alt={product.imgAlt} src={product.imageUrl} height="250"/>
           </div>
-
         </div>
-
-
       </div>
     )
 

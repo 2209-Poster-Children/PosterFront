@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import {viewCartFetch} from '../../api/cart';
+import { viewCartFetch } from '../../api/cart';
 
 const Cart = () => {
   const {cartObj:[cartData, setCartData]} = useOutletContext();
@@ -48,19 +48,17 @@ const Cart = () => {
           <option>Select Address</option>
         </select>
         <br />
-        <span>Cart Subtotal: ${cartData.totalPrice}</span>
+          <span>Cart Subtotal: ${cartData.totalPrice}</span>
         <br />
-        <span>Est. Taxes </span>
+          <span>Est. Taxes </span>
         <br />
-        <span>Est. Total after taxes</span>
+          <span>Est. Total after taxes</span>
         <br />
 
-        <button id="cart-checkout-bttn">Checkout</button>
+        <Link ><button id="cart-checkout-bttn">Checkout</button></Link>
       </div>
-
     </div>
   )
-
 }
 
 export default Cart;
