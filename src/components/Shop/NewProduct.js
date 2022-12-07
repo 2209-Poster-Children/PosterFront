@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 
-import { fetchProductData } from '../../api/products';
+import { fetchProductData, newProductFetch } from '../../api/products';
 
 
 const NewProduct = ({handleToggleNewProductForm, setProductData}) => {
@@ -12,6 +12,7 @@ const NewProduct = ({handleToggleNewProductForm, setProductData}) => {
     const [quantity, setQuantity] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [imageAlt, setImageAlt] = useState("");
+    const [categoryId, setCategoryId] = useState("");
 
     const [errorMessage, setErrorMessage] = useState(""); // todo: set up for missing inputs
 
@@ -19,14 +20,12 @@ const NewProduct = ({handleToggleNewProductForm, setProductData}) => {
     async function newProductFormSubmitHandler(event) {
         event.preventDefault();
 
-        // todo: write fetches and set this up based on returned values
-        // const newProductFetchData = await newProductFetch(title, description, price, quantity, imageUrl, imageAlt);
-        // if (newProductFetchData) {
-        //     handleToggleNewProductForm();
-        //     const productsFetchData = await fetchProductData();
-        //     console.log("productsFetchData", productsFetchData);
-        //     if (productsFetchData) setProductData(productsFetchData);
-        // }
+        const newProductFetchData = await newProductFetch(title, description, price, quantity, imageUrl, imageAlt, categoryId);
+        if (newProductFetchData.product) {
+            handleToggleNewProductForm();
+            const productsFetchData = await fetchProductData(1, 20);
+            setProductData(productsFetchData);
+        }
     }
 
 
@@ -44,6 +43,16 @@ const NewProduct = ({handleToggleNewProductForm, setProductData}) => {
 
                 <br/>
 
+                <label>Image Url:</label>
+                <input type="text" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)}></input>
+
+                <br/>
+
+                <label>Image Alt:</label>
+                <input type="text" value={imageAlt} onChange={(event) => setImageAlt(event.target.value)}></input>
+
+                <br/>
+
                 <div className='horiz-flex-container'>
                     <div className='product-input-container'>
                         <label>Price:</label>
@@ -53,17 +62,11 @@ const NewProduct = ({handleToggleNewProductForm, setProductData}) => {
                         <label>Quantity:</label>
                         <input type="number" value={quantity} onChange={(event) => setQuantity(event.target.value)} className='numeric-input'></input>
                     </div>
+                    <div className='product-input-container'>
+                        <label>Category Id:</label>
+                        <input type="number" value={categoryId} onChange={(event) => setCategoryId(event.target.value)} className='numeric-input'></input>
+                    </div>
                 </div>
-
-                <br/>
-
-                <label>Image Url:</label>
-                <input type="text" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)}></input>
-
-                <br/>
-
-                <label>Image Alt:</label>
-                <input type="text" value={imageAlt} onChange={(event) => setImageAlt(event.target.value)}></input>
 
                 <br/>
 

@@ -1,16 +1,27 @@
 import './shop.css';
-import Searchbar from './Searchbar';
 import { useState, useEffect } from 'react';
 import { useOutletContext, Link, useParams } from 'react-router-dom';
+
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+
 import { fetchProductData } from '../../api/products';
+import Searchbar from './Searchbar';
+import NewProduct from './NewProduct';
+
+
 //named export, deconstructed on import
 // ^as opposed to "export default" on a component
 
 const Products = () => {
+
+  const { userObj: { loggedIn, userData } } = useOutletContext();
+
   const [ productData, setProductData ] = useState([]);
   // const productsByRecent = [...productData].reverse();
   const { page } = useParams();
   const [ count, setCount ] = useState(20);
+
+  const [toggleNewProductForm, setToggleNewProductForm] = useState(false);
 
   useEffect (() => {
     async function getProducts() {
@@ -21,10 +32,22 @@ const Products = () => {
     getProducts();
   }, [page]);
 
+  function handleToggleNewProductForm() {
+    setToggleNewProductForm(!toggleNewProductForm);
+  }
+
+
   return (
     <div>
-
-      <Searchbar productData={productData} />
+      <div className='horiz-flex-container'>
+        <Searchbar productData={productData} />
+        {
+          loggedIn && userData.user.isAdmin ? <div onClick={handleToggleNewProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Add new product</div></div> : null
+        }
+      </div>
+      {
+        toggleNewProductForm ? <NewProduct handleToggleNewProductForm={handleToggleNewProductForm} setProductData={setProductData} /> : null
+      }
       
       <div className="products-container">
 
