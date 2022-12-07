@@ -24,7 +24,7 @@ const Products = () => {
   return (
     <div>
 
-      <Searchbar />
+      <Searchbar productData={productData} />
       
       <div className="products-container">
 
