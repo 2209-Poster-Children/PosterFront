@@ -26,6 +26,7 @@ function searchPosts(event){
 
 }
 
+
 function searchText(event){
   setSearch(event.target.value)
 }
@@ -52,10 +53,10 @@ function searchText(event){
       </form>
 
 
-  {searchResults&&searchResults.length ? searchResults.map ((product,idx)=>{
-       return <div className='product'key={idx}>
-        <Link to = {'/shop/${product._id}'}><span className='name-detail'><b>{product.title} </b></span></Link>
-        <p><span className='price-detail'>{product.price}</span></p></div>
+{searchResults&&searchResults.length ? searchResults.map ((product,idx)=>{
+    return <div className='product'key={idx}>
+      <Link to = {'/shop/${product._id}'}><span className='name-detail'><b>{product.title} </b></span></Link>
+      <p><span className='price-detail'>{product.price}</span></p></div>
               }) : <p>{noResults}</p>
               } </div>
               
