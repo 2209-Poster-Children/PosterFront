@@ -11,7 +11,7 @@ const Navbar = ({loggedIn}) => {
         
         <Link to="/">Home</Link> 
 
-        <Link to="shop">Shop</Link>
+        <Link to="/shop/page/1">Shop</Link>
 
         {
           loggedIn ? 

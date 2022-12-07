@@ -1,18 +1,25 @@
 import './shop.css';
 import Searchbar from './Searchbar';
-import { useOutletContext, Link } from 'react-router-dom';
-// import { useQuery } from 'react-query'
-// import ReactDOM from 'react-dom';
-// import ReactPaginate from 'react-paginate';
+import { useState, useEffect } from 'react';
+import { useOutletContext, Link, useParams } from 'react-router-dom';
+import { fetchProductData } from '../../api/products';
+//named export, deconstructed on import
+// ^as opposed to "export default" on a component
 
 const Products = () => {
-
-  const { productObj: [productData, setProductData]} = useOutletContext();
+  const [ productData, setProductData ] = useState([]);
   const productsByRecent = [...productData].reverse();
-  const {paginateObj: {page, setPage, count, setCount}} = useOutletContext();
+  const { page } = useParams();
+  const [ count, setCount ] = useState(20);
 
-  // clear to relocate fetch products into this component, or better yet
-  // relocate product fetches to api folder and import into this comopnent
+  useEffect (() => {
+    async function getProducts() {
+      const result = await fetchProductData(page, count);
+      setProductData(result);
+    }
+    console.log('fetching products')
+    getProducts();
+  }, [page]);
 
   return (
     <div>
@@ -27,12 +34,12 @@ const Products = () => {
         return <div className="product" key = {idx}>
 
           <div className="product-img">
-            <Link to={`/shop/${product.id}`}>
+            <Link to={`/shop/item/${product.id}`}>
               <img src={product.imageUrl} alt={product.imageAlt} height="300"/>
             </Link>
           </div>
 
-          <Link to={`/shop/${product.id}`}>
+          <Link to={`/shop/item/${product.id}`}>
             <span className="name-detail">
               <b>{product.title}</b></span>
           </Link>
@@ -48,7 +55,7 @@ const Products = () => {
         }) : <p>No products to display at this time</p>
       } 
       
-
+      <Link to="/shop/page/2">Page 2</Link>
       </div> {/* end of products container */}
 
     </div> 
