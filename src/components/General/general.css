@@ -3,6 +3,7 @@
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Meera+Inimai&display=swap');
 
 /* App */
 
@@ -22,7 +23,8 @@ header h1 {
 .navbar-return {
   display: flex;
   justify-content: center;
-  background-color: darkcyan;
+  background-color: #1b1b1b;
+  height: 1.8em;
   /* border: 5px solid red; */
 }
 
@@ -30,14 +32,17 @@ header h1 {
   display: flex;
   justify-content: space-around;
   width: 700px;
-  background-color: darkcyan;
+  background-color: #1b1b1b;
+  font-family: 'Meera Inimai', sans-serif;
+  font-size: x-large;
+  padding: 5px 5px 5px 5px;
   /* border: 3px solid lightblue; */
 }
 
 .navbar a {
   text-decoration: none;
-  background-color: darkcyan;
-  
+  background-color: #1b1b1b;
+  color: lightgray;
 }
 
 footer {
