@@ -36,6 +36,7 @@ const Products = () => {
     setToggleNewProductForm(!toggleNewProductForm);
   }
 
+  console.log(productData[0]?.count)
 
   return (
     <div>

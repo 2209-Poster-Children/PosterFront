@@ -42,7 +42,7 @@ header h1 {
 .navbar a {
   text-decoration: none;
   background-color: #1b1b1b;
-  color: #ffd91b;
+  color: lightgray;
 }
 
 footer {
