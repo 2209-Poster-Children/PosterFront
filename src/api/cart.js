@@ -91,3 +91,24 @@ export async function deleteFromCart(productId){
     console.log(error)
   }
 }
+
+export async function createCreditCard({creditName,creditNumber,CCV,expiration,zipcode}){
+  try{
+    const response = await fetch('https://poster-backendapi.onrender.com/api/cart/',
+    { method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({
+        creditName:creditName,
+        creditNumber:creditNumber,
+        CCV:CCV,
+        expiration:expiration,
+        zipcode:zipcode
+      })
+    })
+  }catch(error){
+    console.log(error);
+  }
+}

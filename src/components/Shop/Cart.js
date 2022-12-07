@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, Link } from 'react-router-dom';
 import { viewCartFetch } from '../../api/cart';
 
 const Cart = () => {
@@ -55,7 +55,7 @@ const Cart = () => {
           <span>Est. Total after taxes</span>
         <br />
 
-        <Link ><button id="cart-checkout-bttn">Checkout</button></Link>
+        <Link to='/checkout'><button id="cart-checkout-bttn">Checkout</button></Link>
       </div>
     </div>
   )
