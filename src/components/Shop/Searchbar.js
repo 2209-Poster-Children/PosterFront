@@ -3,8 +3,8 @@ import { ImSearch } from 'react-icons/im'
 import { useOutletContext,Link } from 'react-router-dom'
 import { useState } from 'react';
 
-const Searchbar = () => {
-  const {productObj:[productData,setData]}=useOutletContext();
+const Searchbar = ({productData}) => {
+
   const [search,setSearch]=useState("");
   const [searchResults,setSearchResults]=useState([]);
   const [noResults,setNoResults]=useState([""]);
