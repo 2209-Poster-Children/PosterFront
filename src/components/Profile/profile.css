@@ -45,6 +45,12 @@
     border-style: none;
     outline: none;
     background-color: rgb(6, 6, 77);
+    color: lightblue;
+}
+
+.light-mode .user-form input {
+    background-color: white;
+    color: black;
 }
 
 .login-button {
@@ -410,4 +416,16 @@ input:checked + .slider:before {
 
 .product-form .numeric-input {
     width: 60px;
+}
+
+.add-product-button {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid royalblue;
+    border-radius: 5px;
+    color: royalblue;
+    cursor: pointer;
 }
