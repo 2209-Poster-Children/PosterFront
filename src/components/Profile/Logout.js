@@ -19,7 +19,7 @@ const Logout = () => {
   }
 
   return (
-    <div className='clickable profile-card' onClick={logOutUser}>
+    <div className='profile-card' onClick={logOutUser}>
       <FiLogOut className='profile-card-img' />
       <h3>Logout</h3>
     </div>

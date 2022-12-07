@@ -44,6 +44,7 @@
     flex-grow: 1;
     border-style: none;
     outline: none;
+    background-color: rgb(6, 6, 77);
 }
 
 .login-button {
@@ -51,6 +52,7 @@
     border-radius: 5px;
     font-size: 14pt;
     cursor: pointer;
+    background-color: lightblue;
 }
 
 .error-container {
@@ -104,11 +106,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     width: 150px;
     height: 150px;
     margin: 15px;
     border: 2px solid;
     border-radius: 10px;
+    color: lightblue;
+}
+
+.light-mode .profile-card {
+    color: rgb(6, 6, 77);
 }
 
 .profile-card-img {
@@ -130,6 +138,7 @@
 
 .profile-navbar-icon {
     font-size: 2em;
+    color: lightblue;
 }
 
 /* ADDRESSES */
@@ -137,16 +146,19 @@
 .address-container {
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
     margin: 5px;
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
     font-size: 14pt;
+    width: 420px;
 }
 
 .address-element {
     display: flex;
     flex-direction: column;
+    align-self: center;
     padding: 2px;
     margin: 5px;
     border: 2px solid rgb(32, 32, 102);
@@ -186,8 +198,8 @@
     align-items: center;
     background: darkcyan;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     font-weight: bold;
 }
 
@@ -201,6 +213,7 @@
     border: 2px solid darkcyan;
     border-radius: 5px;
     cursor: pointer;
+    background-color: lightgray;
 }
 
 .new-address-button-label {
@@ -219,7 +232,7 @@
     font-size: 2em;
     padding: 2px;
     background-color: darkcyan;
-    color: white;
+    color: lightgray;
 }
 
 .address-form {
@@ -232,6 +245,12 @@
     border: 2px solid;
     border-radius: 10px;
     font-size: 14pt;
+    background-color: rgb(6, 6, 77);
+    /* color: #551a8b; */
+}
+
+.light-mode .address-form {
+    background-color: whitesmoke;
 }
 
 .address-form input {
@@ -240,6 +259,13 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
+    background-color: rgb(32, 32, 102);
+    color: lightblue;
+}
+
+.light-mode .address-form input {
+    background-color: white;
+    color: black;
 }
 
 .address-input-container {
@@ -251,6 +277,13 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
+    background-color: rgb(32, 32, 102);
+    color: lightblue;
+}
+
+.light-mode .address-state-select {
+    background-color: white;
+    color: black;
 }
 
 .address-zipcode-input {
@@ -339,3 +372,42 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+
+
+
+/* MOVE TO shop.css */
+
+/* New Product */
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    max-width: 400px;
+    padding: 25px 25px;
+    border: 2px solid;
+    border-radius: 10px;
+    font-size: 14pt;
+}
+
+.product-form input {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.product-form textarea {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.product-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form .numeric-input {
+    width: 60px;
+}
