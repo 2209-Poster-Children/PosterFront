@@ -72,9 +72,9 @@ export async function viewCartFetch() {
   
 }
 
-export async function deleteFromCart(productId){
+export async function deleteFromCart({productId}){
   try{
-    const response = await fetch('https://poster-backendapi.onrender.com/api/cart/',
+    const response = await fetch(`https://poster-backendapi.onrender.com/api/cart/${productId}`,
       { method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -94,21 +94,39 @@ export async function deleteFromCart(productId){
 
 export async function createCreditCard({creditName,creditNumber,CCV,expiration,zipcode}){
   try{
-    const response = await fetch('https://poster-backendapi.onrender.com/api/cart/',
+    const response = await fetch('https://poster-backendapi.onrender.com/api/credit',
     { method: "POST",
       headers:{
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
-        creditName:creditName,
+        name:creditName,
         creditNumber:creditNumber,
         CCV:CCV,
         expiration:expiration,
         zipcode:zipcode
       })
     })
+    const creditData = response.json();
+    return creditData;
   }catch(error){
     console.log(error);
+  }
+}
+
+export async function purchaseCart(){
+  try{
+    const response = await fetch('https://poster-backendapi.onrender.com/api/cart/purchase',
+    { method: "PATCH",
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    const purchaseData = response.json();
+    return purchaseData;
+  }catch(error){
+    console.log(error)
   }
 }

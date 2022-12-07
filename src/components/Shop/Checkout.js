@@ -1,40 +1,48 @@
 import { useState } from 'react';
-import { useOutletContext} from 'react-router-dom';
-import { createCreditCard } from '../../api/cart';
+import { useOutletContext,useNavigate} from 'react-router-dom';
+import { createCreditCard, purchaseCart } from '../../api/cart';
+
 
 const Checkout = () =>{
     const {cartObj:[cartData, setCartData]} = useOutletContext();
-    const {userObj:{userData}} =useOutletContext();
+    const {userObj:{userData}} = useOutletContext();
     const [creditName,setCreditName] = useState();
     const [creditNumber,setCreditNumber] = useState();
     const [CCV, setCCV ] = useState();
     const [expiration, setExpiration] = useState();
     const [zipcode,setZipcode] = useState();
     const [errorMessage,setError] = useState("");
+    const navigate = useNavigate();
 
     console.log(cartData);
     async function formSubmitHandler(event){
       event.preventDefault();
-      if(creditNumber == undefined || creditNumber.length != 16 ){
-        setError("Invalid credit card number length")
-        return 
-      }else if(CCV == undefined|| CCV.length != 3){
-        setError("Invalid CCV length")
-        return 
-      }else if(expiration == undefined || expiration.length > 5 ||expiration.length < 3 ){
-        setError("Invalid expiration")
-        return
-      }else if(zipcode == undefined || zipcode.length != 5){
-        setError( "Invalid zipcode");
-        return
-      }else{
+      // if(creditNumber == undefined || creditNumber.length != 16 ){
+      //   setError("Invalid credit card number length")
+      //   return 
+      // }else if(CCV == undefined|| CCV.length != 3){
+      //   setError("Invalid CCV length")
+      //   return 
+      // }else if(expiration == undefined || expiration.length > 5 ||expiration.length < 3 ){
+      //   setError("Invalid expiration")
+      //   return
+      // }else if(zipcode == undefined || zipcode.length != 5){
+      //   setError( "Invalid zipcode");
+      //   return
+      // }else{
         try{
-          const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
-          console.log(credit);
+          if(cartData.products.length){
+            const purchase = await purchaseCart();
+            // const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
+            console.log(purchase);
+            if(purchase){
+              navigate('/checkout-success')
+            }
+          }
         }catch(error){
           console.log(error);
         }
-      }
+      // }
       
     }
 
@@ -87,16 +95,10 @@ const Checkout = () =>{
                       <span>{product.title}
 
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      quantity: &nbsp;
-                        <select>
-                          <option value={product.quantity}>
-                            {product.quantity}
-                          </option>
-                        </select>
+                      quantity: {product.quantity} &nbsp;
                       </span>
 
-                      <span>${product.subtotal}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="cart-remove">X</button></span>
+                      <span>${product.subtotal}</span>
 
                     </div>
 
