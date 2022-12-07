@@ -48,8 +48,20 @@ const Products = () => {
       {
         toggleNewProductForm ? <NewProduct handleToggleNewProductForm={handleToggleNewProductForm} setProductData={setProductData} /> : null
       }
+
+      <div className="products-pagination-nav">
+        Go to Page...
+        <span>(-1)</span>
+        <Link to="/shop/page/1">1</Link>,
+        <Link to="/shop/page/2">2</Link>,
+        <Link to="/shop/page/3">3</Link>,
+        <Link to="/shop/page/4">4</Link>
+        <span>(+1)</span>
+      </div>
       
       <div className="products-container">
+
+      <div className='horiz-flex-container'></div>
 
       {
         productData && productData.length ? productData.map((product, idx) => {
@@ -80,7 +92,13 @@ const Products = () => {
       
 
       </div> {/* end of products container */}
-      <Link to="/shop/page/2">Page 2</Link>
+      <div className="products-pagination-nav">
+        Go to Page...
+        <Link to="/shop/page/1">1</Link>,
+        <Link to="/shop/page/2">2</Link>,
+        <Link to="/shop/page/3">3</Link>,
+        <Link to="/shop/page/4">4</Link>
+      </div>
     </div> 
   ) // end of return statement 
 }
