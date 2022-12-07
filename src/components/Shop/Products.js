@@ -8,7 +8,7 @@ import { fetchProductData } from '../../api/products';
 
 const Products = () => {
   const [ productData, setProductData ] = useState([]);
-  const productsByRecent = [...productData].reverse();
+  // const productsByRecent = [...productData].reverse();
   const { page } = useParams();
   const [ count, setCount ] = useState(20);
 
@@ -29,7 +29,7 @@ const Products = () => {
       <div className="products-container">
 
       {
-        productsByRecent && productsByRecent.length ? productsByRecent.map((product, idx) => {
+        productData && productData.length ? productData.map((product, idx) => {
         // console.log(product.title);
         return <div className="product" key = {idx}>
 
@@ -55,9 +55,9 @@ const Products = () => {
         }) : <p>No products to display at this time</p>
       } 
       
-      <Link to="/shop/page/2">Page 2</Link>
-      </div> {/* end of products container */}
 
+      </div> {/* end of products container */}
+      <Link to="/shop/page/2">Page 2</Link>
     </div> 
   ) // end of return statement 
 }
