@@ -1,12 +1,30 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useOutletContext, Link } from 'react-router-dom';
-import { viewCartFetch } from '../../api/cart';
+import CartQuantityDropdown from './CartQuantityDropdown';
+import CartDelete from './CartDelete';
 
 const Cart = () => {
   const {cartObj:[cartData, setCartData]} = useOutletContext();
   const { userObj: {userData} } = useOutletContext();
+  const [ quantity, setQuantity ] = useState(1);
 
-  console.log(cartData)
+  console.log(cartData) 
+
+  async function deleteProductFromCart(event){
+    event.preventDefault();
+  }
+  const safeCheck = (cart,productId) =>{
+    let checker = false;
+    cart.products.forEach((product)=>{
+      if(product.productId == productId){
+        checker = true
+      }
+    })
+    console.log("safeCheck  ", checker);
+    return checker;
+  }
+
+
   return (
     <div className="cart-return">
 
@@ -26,15 +44,11 @@ const Cart = () => {
 
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               quantity: &nbsp;
-                <select>
-                  <option value={product.quantity}>
-                    {product.quantity}
-                  </option>
-                </select>
+                <CartQuantityDropdown product={product}/>
               </span>
 
               <span>${product.subtotal}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="cart-remove">X</button></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<CartDelete product={product}/> </span>
 
             </div>
 
@@ -43,10 +57,6 @@ const Cart = () => {
       }
       </div>
       <div className="cart-checkout-container">
-        Deliver to: &nbsp;
-        <select>
-          <option>Select Address</option>
-        </select>
         <br />
           <span>Cart Subtotal: ${cartData.totalPrice}</span>
         <br />
