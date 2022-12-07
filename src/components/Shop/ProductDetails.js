@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
 
 const ProductDetails = () => {
-  const { productObj: [productData, setProductData] } = useOutletContext();
   const { cartObj: [cartData, setCartData]}= useOutletContext();
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
