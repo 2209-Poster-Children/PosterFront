@@ -135,13 +135,6 @@ const Checkout = () =>{
               </div>
             
             </div>
-          {/* we need to make an address holster for the credit card runner */}
-          {/* <div className="creditCard">
-          <div className="address">
-            <label>Address</label>
-          </div>
-          </div> */}
-          
 
           <div className="checkout-fields-container">
             
