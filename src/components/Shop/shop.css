@@ -220,3 +220,7 @@
   font-weight: bold;
   background-color: orange;
 }
+
+.address{
+  display:flex;
+}

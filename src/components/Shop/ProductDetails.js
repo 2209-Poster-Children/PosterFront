@@ -1,6 +1,10 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
+import addToCart from '../../api/guest';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+
+import EditProduct from './EditProduct';
 
 const ProductDetails = () => {
   const { cartObj: [cartData, setCartData]}= useOutletContext();
@@ -11,7 +15,8 @@ const ProductDetails = () => {
   const [mouseOverClass, setMouseOverClass] = useState("")
   const [mouseOverTipClass, setMouseOverTipClass] = useState("tooltip")
   const [mouseOverTipTextClass, setMouseOverTipTextClass] = useState("tooltiptext")
-  const {userObj: {userData}} = useOutletContext()
+  const [toggleEditProductForm, setToggleEditProductForm] = useState(false);
+  const {userObj: {loggedIn, userData}} = useOutletContext()
   const { id } = useParams();
 
   useEffect(() => {
@@ -36,27 +41,33 @@ const ProductDetails = () => {
     getIndivProduct();
 
   }, []);
-
+  
   async function addProductToCart(event){
     event.preventDefault();
-    //write quantity functional stuff later (usestate)
-    console.log(cartData);
-    if(safeCheck(cartData, id)){
-      const addQuantityFetchedData = await addQuantityFetch(id,quantity);
-      console.log(addQuantityFetchedData);
-    }else{
-      const addCartFetchedData = await addToCartFetch(id,quantity);
-      console.log(addCartFetchedData);
+    if(!userData.user){
+      setCartData(addToCart(product, quantity));
+      console.log("you're a pleb without a cart");
     }
-      const fetchCart = await viewCartFetch();
-      setCartData(fetchCart);
+    else{
+      //write quantity functional stuff later (usestate)
+      console.log(cartData);
+      if(safeCheck(cartData, id)){
+        const addQuantityFetchedData = await addQuantityFetch(id,quantity);
+        console.log(addQuantityFetchedData);
+      }else{
+        const addCartFetchedData = await addToCartFetch(id,quantity);
+        console.log(addCartFetchedData);
+      }
+        const fetchCart = await viewCartFetch();
+        setCartData(fetchCart);
+    }
   }
 
   //this function will check if a cart already has a product id and instead push a quantity instead of 
   // trying to add to cart.
   const safeCheck = (cart,productId) =>{
     let checker = false;
-    cart.products.forEach((product)=>{
+    cart?.products?.forEach((product)=>{
       if(product.productId == productId){
         checker = true
       }
@@ -91,9 +102,26 @@ const ProductDetails = () => {
     setQuantity(event.target.value)
   }
   
+  function handleToggleEditProductForm() {
+    setToggleEditProductForm(!toggleEditProductForm);
+  }
+
   if (product.id) {
     return (
       <div className="details-return">
+        <div className='admin-button-container'>
+        {
+          loggedIn && userData.user.isAdmin ? <div onClick={handleToggleEditProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Edit product</div></div> : null
+        }
+        </div>
+        <div className='vert-flex-container'>
+        {
+          toggleEditProductForm ? <EditProduct product={product} handleToggleEditProductForm={handleToggleEditProductForm} setProduct={setProduct} /> : null
+        }
+        </div>
+
+
+
         {/* top */}
         <div className="details-main-container">
 

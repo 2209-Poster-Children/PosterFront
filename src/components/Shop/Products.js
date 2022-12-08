@@ -43,12 +43,14 @@ const Products = () => {
 
   return (
     <div>
-      <div className='horiz-flex-container'>
-        <Searchbar productData={productData} />
+      <div className='admin-button-container'>
         {
           loggedIn && userData.user.isAdmin ? <div onClick={handleToggleNewProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Add new product</div></div> : null
         }
       </div>
+
+      <Searchbar productData={productData} />
+
       {
         toggleNewProductForm ? <NewProduct handleToggleNewProductForm={handleToggleNewProductForm} setProductData={setProductData} /> : null
       }

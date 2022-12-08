@@ -26,7 +26,16 @@ const App = () => {
                 const cart = await viewCartFetch()
                 console.log(cart);
                 setCartData(cart);
-            } else console.log('not already logged in...');
+            } else { // this is guest cart, it will set a guest if it doesn't exist.
+                console.log('not already logged in...');
+                const guestCart = JSON.parse(localStorage.getItem("cart"));
+                if(guestCart){
+                    setCartData(guestCart);
+                }else{
+                    localStorage.setItem("cart",JSON.stringify({totalPrice:0, products:[]}))
+                    setCartData(JSON.parse(localStorage.getItem("cart")));
+                }
+            }
         }
         checkforUser();
 
