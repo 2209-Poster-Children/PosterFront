@@ -16,6 +16,7 @@ header h1 {
   text-align: center;
   font-family: 'Rubik Mono one';
   color: lightgray;
+  color: #dabfbb;
 }
 
 /* Navbar */
@@ -25,6 +26,8 @@ header h1 {
   justify-content: center;
   background-color: #1b1b1b;
   height: 1.8em;
+  padding: 10px 10px 10px 10px;
+  align-items: center;
   /* border: 5px solid red; */
 }
 
