@@ -50,7 +50,8 @@ const Cart = () => {
           <br />
         </div>
 
-        {cartData.totalPrice != 0?<Link to='/checkout'><button className="cart-checkout-bttn">Proceed to Checkout</button></Link>:<div>Your cart is empty</div>}
+        {cartData.totalPrice != 0?<Link to='/checkout'><button className="cart-checkout-bttn">Proceed to Checkout</button></Link>:<div id="cart-come-back-later">Come back when you're actually ready to buy something</div>}
+
       </div>
     </div>
   )
