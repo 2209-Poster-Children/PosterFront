@@ -17,11 +17,14 @@ const Logout = () => {
     setLoggedIn(false);
     setUserData({});
     localStorage.getItem("cart")?setCartData(JSON.parse(localStorage.getItem("cart"))): setCartData({})
+    toast("Successfully logged out")
     navigate('/');
   }
 
   return (
     <div className='profile-card' onClick={logOutUser}>
+      <ToastContainer 
+        theme="dark"/>
       <FiLogOut className='profile-card-img' />
       <h3>Logout</h3>
     </div>

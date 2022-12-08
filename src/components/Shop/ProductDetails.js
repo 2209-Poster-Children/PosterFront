@@ -20,6 +20,7 @@ const ProductDetails = () => {
   const [toggleEditProductForm, setToggleEditProductForm] = useState(false);
   const {userObj: {loggedIn, userData}} = useOutletContext()
   const { id } = useParams();
+  const { notify } = useOutletContext();
 
   useEffect(() => {
     console.log(userData);
@@ -63,7 +64,7 @@ const ProductDetails = () => {
         const fetchCart = await viewCartFetch();
         setCartData(fetchCart);
     }
-    toast(`Successfully added ${product.title} to cart`)
+    notify(`Successfully added ${product.title} to cart`)
   }
 
   //this function will check if a cart already has a product id and instead push a quantity instead of 
@@ -112,8 +113,8 @@ const ProductDetails = () => {
   if (product.id) {
     return (
       <div className="details-return">
-        <ToastContainer 
-          theme="dark"/>
+        {/* <ToastContainer 
+          theme="dark"/> */}
         <div className='admin-button-container'>
         {
           loggedIn && userData.user.isAdmin ? <div onClick={handleToggleEditProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Edit product</div></div> : null
