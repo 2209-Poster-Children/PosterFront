@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { deleteFromCart, viewCartFetch} from '../../api/cart';
 import { useOutletContext } from 'react-router-dom';
 import { guestProductsDelete } from "../../api/guest";
+import { RiDeleteBinLine } from "react-icons/ri"
 
 //do we need a useEffect? what is happn
 const CartDelete = ({product}) =>{
@@ -32,7 +33,7 @@ const CartDelete = ({product}) =>{
     }
     
     return(
-        <button className="cart-remove" onClick={updateCart}>X</button>
+        <button className="cart-remove" onClick={updateCart}><RiDeleteBinLine /></button>
     )
 }
 

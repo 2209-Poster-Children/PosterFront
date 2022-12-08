@@ -9,11 +9,15 @@ import './general.css';
 import { userFetch } from '../../api/users';
 import {viewCartFetch} from '../../api/cart';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
 
     const [ userData, setUserData ] = useState({});
     const [ loggedIn, setLoggedIn ] = useState(false);
     const [ cartData, setCartData] = useState({});
+    const notify = (message) => toast(message)
 
     useEffect(() => {
         // check for local storage token and set user data with a user fetch
@@ -50,10 +54,13 @@ const App = () => {
             </header>
 
             <Navbar loggedIn={loggedIn}/>
+            <ToastContainer 
+                theme="dark"/>
             
             <Outlet context={{ 
                 userObj: {loggedIn, setLoggedIn, userData, setUserData},
                 cartObj: [cartData, setCartData],
+                notify
             }} />
 
             <footer>
