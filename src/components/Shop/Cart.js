@@ -6,24 +6,7 @@ import CartDelete from './CartDelete';
 const Cart = () => {
   const {cartObj:[cartData, setCartData]} = useOutletContext();
   const { userObj: {userData} } = useOutletContext();
-  const [ quantity, setQuantity ] = useState(1);
-
-  console.log(cartData) 
-
-  async function deleteProductFromCart(event){
-    event.preventDefault();
-  }
-  const safeCheck = (cart,productId) =>{
-    let checker = false;
-    cart.products.forEach((product)=>{
-      if(product.productId == productId){
-        checker = true
-      }
-    })
-    console.log("safeCheck  ", checker);
-    return checker;
-  }
-
+  
 
   return (
     <div className="cart-return">
@@ -38,7 +21,6 @@ const Cart = () => {
               <span><img src={product.imageUrl} alt={product.imageAlt} height="150" /></span>
             </div>
 
-
             <div className="cart-details">
               <span>{product.title}
 
@@ -48,7 +30,7 @@ const Cart = () => {
               </span>
 
               <span>${product.subtotal}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*<CartDelete product={product}/>*/} </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<CartDelete product={product}/> </span>
 
             </div>
 
@@ -68,7 +50,7 @@ const Cart = () => {
           <br />
         </div>
 
-        <Link to='/checkout'><button className="cart-checkout-bttn">Proceed to Checkout</button></Link>
+        {cartData.totalPrice != 0?<Link to='/checkout'><button className="cart-checkout-bttn">Proceed to Checkout</button></Link>:<div>Your cart is empty</div>}
       </div>
     </div>
   )

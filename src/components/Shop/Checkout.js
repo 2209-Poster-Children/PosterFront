@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useOutletContext,useNavigate} from 'react-router-dom';
 import { createCreditCard, purchaseCart } from '../../api/cart';
 import {viewCartFetch} from '../../api/cart';
+import {guestCheckout} from '../../api/guest';
 import { RiNumber1, RiNumber2, RiNumber3 } from 'react-icons/ri'
 
 
@@ -19,34 +20,40 @@ const Checkout = () =>{
     console.log(cartData);
     async function formSubmitHandler(event){
       event.preventDefault();
-      if(creditNumber == undefined || creditNumber.length != 16 ){
-        setError("Invalid credit card number length")
-        return 
-      }else if(CCV == undefined|| CCV.length != 3){
-        setError("Invalid CCV length")
-        return 
-      }else if(expiration == undefined || expiration.length > 5 ||expiration.length < 3 ){
-        setError("Invalid expiration")
-        return
-      }else if(zipcode == undefined || zipcode.length != 5){
-        setError( "Invalid zipcode");
-        return
-      }else{
+      // if(creditNumber == undefined || creditNumber.length != 16 ){
+      //   setError("Invalid credit card number length")
+      //   return 
+      // }else if(CCV == undefined|| CCV.length != 3){
+      //   setError("Invalid CCV length")
+      //   return 
+      // }else if(expiration == undefined || expiration.length > 5 ||expiration.length < 3 ){
+      //   setError("Invalid expiration")
+      //   return
+      // }else if(zipcode == undefined || zipcode.length != 5){
+      //   setError( "Invalid zipcode");
+      //   return
+      // }else{
         try{
+          console.log(cartData.products.length);
           if(cartData.products.length){
             const purchase = await purchaseCart();
-            const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
+            // const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
             console.log(purchase);
             if(purchase){
-              const cart = await viewCartFetch();
-              setCartData(cart)
+              if(userData.user){
+                const cart = await viewCartFetch();
+                setCartData(cart);
+              }else {
+                const guestCart = guestCheckout();
+                setCartData(guestCart);
+              }
               navigate('/checkout-success')
             }
           }
         }catch(error){
           console.log(error);
         }
-      }
+      // } //end of if else statement for credit card
       
     }
 
@@ -56,7 +63,7 @@ const Checkout = () =>{
         
         
         <form onSubmit={formSubmitHandler}>
-        <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
+        <p id="cart-username">{userData?.user?.username||"Lovely Amazing Guest"}'s Final Cart</p>
 
         {/* Step 1. Confirm Credit Card */}
           <div className="checkout-fields-container">
@@ -162,11 +169,14 @@ const Checkout = () =>{
             </div>
           </div>
         </form>
-        <div className = "cart-checkout-container">
-        {/* <p id="cart-username">{userData?.user?.username}'s Final Cart</p> */}
-          <button id="purchaseItems" className="cart-checkout-bttn" type="submit">Complete Purchase</button>
-          {errorMessage?<div>{errorMessage}</div>:null}
-        </div>
+        <form onSubmit={formSubmitHandler}>
+          <div className = "cart-checkout-container">
+            {/* <p id="cart-username">{userData?.user?.username}'s Final Cart</p> */}
+            <button id="purchaseItems" className="cart-checkout-bttn" type="submit">Complete Purchase</button>
+            {errorMessage?<div>{errorMessage}</div>:null}
+          </div>
+        </form>
+
       </div>
     )
     
