@@ -8,7 +8,7 @@
 /* App */
 
 header {
-  background-image: url('https://images5.alphacoders.com/357/357824.jpg');
+  background-image: url('https://i.imgur.com/C9DLjKS.png');
   padding: 10px;
 }
 
@@ -16,7 +16,9 @@ header h1 {
   text-align: center;
   font-family: 'Rubik Mono one';
   color: lightgray;
-  color: #dabfbb;
+  color: #dabfbb; 
+  /* pink is nice, but is this yellow better??? */
+  color: #ea980b;
 }
 
 /* Navbar */
@@ -29,6 +31,7 @@ header h1 {
   padding: 10px 10px 10px 10px;
   align-items: center;
   /* border: 5px solid red; */
+  /* margin-bottom: 15px; */
 }
 
 .navbar {
@@ -45,11 +48,17 @@ header h1 {
 .navbar a {
   text-decoration: none;
   background-color: #1b1b1b;
+  color: #f5a3dd;
   color: lightgray;
 }
 
 footer {
   text-align: center;
+  margin-top: 50px;
+}
+
+footer a {
+  color: #ea980b;
 }
 
 /* ErrorPage */

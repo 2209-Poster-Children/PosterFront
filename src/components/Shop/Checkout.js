@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useOutletContext,useNavigate} from 'react-router-dom';
 import { createCreditCard, purchaseCart } from '../../api/cart';
 import {viewCartFetch} from '../../api/cart';
+import { RiNumber1, RiNumber2 } from 'react-icons/ri'
 
 
 const Checkout = () =>{
@@ -55,30 +56,47 @@ const Checkout = () =>{
         
         
         <form onSubmit={formSubmitHandler}>
-          <div className="creditCard">
+        <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
+          <div className="checkout-fields-container">
+            <div className="checkout-step-number">
+              <RiNumber1 />
+            </div>
+            <div className="checkout-creditCard">
           
-            <label>Creditcard owners name:</label>
-            <br/>
-            <input type="text" value={creditName} onChange={(event) => {setCreditName(event.target.value)}}></input>
-            <br/>
-            <label>Credit Card Number:</label>
-            <br/>
-            <input type="number" value={creditNumber} onChange={(event) => {setCreditNumber(event.target.value)}}></input>
-            <br />
-            <label>Credit Card CCV:</label>
-            <br/>
-            <input type="number" value={CCV} onChange={(event) => {setCCV(event.target.value)}}></input>
-            <br />
-            <label>Expiration Date</label>
-            <br/>
-            <input type="number" value={expiration} onChange={(event) => {setExpiration(event.target.value)}}></input>
-            <br />
-            <label>Zipcode:</label>
-            <br/>
-            <input type="number" value={zipcode} onChange={(event) => {setZipcode(event.target.value)}}></input>
+              <label>Creditcard owners name:</label>
+              <br/>
+              <input type="text" value={creditName} onChange={(event) => {setCreditName(event.target.value)}}></input>
+              <br/>
+              <label>Credit Card Number:</label>
+              <br/>
+              <input type="number" value={creditNumber} onChange={(event) => {setCreditNumber(event.target.value)}}></input>
+              <br />
+              <label>Credit Card CCV:</label>
+              <br/>
+              <input type="number" value={CCV} onChange={(event) => {setCCV(event.target.value)}}></input>
+              <br />
+              <label>Expiration Date</label>
+              <br/>
+              <input type="number" value={expiration} onChange={(event) => {setExpiration(event.target.value)}}></input>
+              <br />
+              <label>Zipcode:</label>
+              <br/>
+            </div>
+            </div>
+
+            <div className="checkout-fields-container">
+
+              <div className="checkout-step-number">
+                <RiNumber2 />
+              </div>
+
+              <div className="checkout-address">
+              
+                <input type="number" value={zipcode} onChange={(event) => {setZipcode(event.target.value)}}></input>
+              </div>
             <br/>
             
-          </div>
+            </div>
           {/* we need to make an address holster for the credit card runner */}
           
           <div className="address">
@@ -116,8 +134,8 @@ const Checkout = () =>{
           </div>
         </form>
         <div className = "cart-checkout-container">
-        <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
-          <button id="purchaseItems" type="submit">Finalize Purchase</button>
+        {/* <p id="cart-username">{userData?.user?.username}'s Final Cart</p> */}
+          <button id="purchaseItems" className="cart-checkout-bttn" type="submit">Complete Purchase</button>
           {errorMessage?<div>{errorMessage}</div>:null}
         </div>
       </div>
