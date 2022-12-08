@@ -1,17 +1,16 @@
 // import React from 'react';
 import './general.css';
-import ErrorPage from './ErrorPage'
+import HomeGallery from './HomeGallery';
 
 const Home = () => {
 
     return (
         <div>
-            <h1>Welcome to our site</h1>
+            {/* <h1>Welcome to our site</h1> */}
 
-            {/* remove below when done testing */}
-            <p> -------------testing ErrorPage style below:-------------</p>
-            <ErrorPage />
-            {/* remove above when done testing */}
+            <div className="home-gallery-container">
+                <HomeGallery />
+            </div>
             
         </div>
     )
