@@ -56,13 +56,13 @@ const Products = () => {
       }
 
       <div className="products-pagination-nav">
-        Go to Page...
-        <span>(-1) {"<"}</span>
+        Shop Page: 
+
         <Link to="/shop/page/1">1</Link>,
         <Link to="/shop/page/2">2</Link>,
         <Link to="/shop/page/3">3</Link>,
         <Link to="/shop/page/4">4</Link>
-        <span>(+1) {">"}</span> 
+
       </div>
       
       <div className="products-container">
