@@ -63,7 +63,7 @@ const Checkout = () =>{
         
         
         <form onSubmit={formSubmitHandler}>
-        <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
+        <p id="cart-username">{userData?.user?.username||"Lovely Amazing Guest"}'s Final Cart</p>
 
         {/* Step 1. Confirm Credit Card */}
           <div className="checkout-fields-container">
