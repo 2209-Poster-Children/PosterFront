@@ -60,8 +60,7 @@ const Products = () => {
 
         <Link to="/shop/page/1">1</Link>,
         <Link to="/shop/page/2">2</Link>,
-        <Link to="/shop/page/3">3</Link>,
-        <Link to="/shop/page/4">4</Link>
+        <Link to="/shop/page/3">3</Link>
 
       </div>
       
@@ -111,8 +110,7 @@ const Products = () => {
         Go to Page...
         <Link to="/shop/page/1">1</Link>,
         <Link to="/shop/page/2">2</Link>,
-        <Link to="/shop/page/3">3</Link>,
-        <Link to="/shop/page/4">4</Link>
+        <Link to="/shop/page/3">3</Link>
       </div>
     </div> 
   ) // end of return statement 
