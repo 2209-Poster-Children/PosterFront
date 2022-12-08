@@ -15,7 +15,7 @@ const GallerySrc = () => {
     },
     {
       id: 1,
-      imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjzT8XKAJI6AFn4O9--rcouJxHmbNfmnXRL7Btwc8ihQ5bfDCY1PGHQWMXDNxRPrOauhI&usqp=CAU'
+      imgSrc: 'https://i.pinimg.com/564x/bb/ab/1c/bbab1ca03a8b81457c02133c4f0a365d.jpg'
     },
     {
       id: 2,

@@ -68,7 +68,7 @@ const Login = () => {
         <button type='submit' className='login-button'>Login</button>
       </form>
 
-      <Link to='/register'>Don't have an account? Click here to sign up</Link>
+      <Link to='/register' id="register-link">Don't have an account? Click here to sign up</Link>
 
       {
         errorMessage ? 
