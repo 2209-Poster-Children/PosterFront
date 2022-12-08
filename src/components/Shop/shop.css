@@ -493,7 +493,29 @@
   
 
 
-/* .checkout-creditCard{
-  display: flex;
-  flex-direction: column;
-} */
+.checkout-step-title {
+  font-size: xx-large;
+}
+
+.checkout-creditCard input{
+  width: 250px;
+  padding: 5px;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.checkout-creditCard {
+  padding-bottom: 40px;;
+  border-bottom: 2px outset lightgray;
+}
+
+.checkout-address {
+  padding-bottom: 40px;;
+}
+
+.checkout-address select {
+  height: 27px;
+  border-radius: 5px;
+  width: 260px;
+  /* background-color: red; */
+}
