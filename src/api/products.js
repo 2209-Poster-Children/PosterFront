@@ -56,10 +56,10 @@ export async function newProductFetch(title, description, price, quantity, image
   }
 }
 
-export async function editProductFetch(title, description, price, quantity, imageUrl, imageAlt, categoryId) {
+export async function editProductFetch(productId, title, description, price, quantity, imageUrl, imageAlt, categoryId) {
     try {
         const response = await fetch(
-            'https://poster-backendapi.onrender.com/api/products',
+            `https://poster-backendapi.onrender.com/api/products/${productId}`,
             {
                 method: "PATCH",
                 headers: {

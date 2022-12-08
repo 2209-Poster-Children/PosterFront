@@ -16,8 +16,8 @@ const EditProduct = ({product, handleToggleEditProductForm, setProduct}) => {
     async function editProductFormSubmitHandler(event) {
         event.preventDefault();
 
-        const editProductFetchData = await editProductFetch(title, description, price, quantity, imageUrl, imageAlt, categoryId);
-        if (editProductFetchData) {
+        const editProductFetchData = await editProductFetch(product.id, title, description, price, quantity, imageUrl, imageAlt, categoryId);
+        if (editProductFetchData.id) {
             handleToggleEditProductForm();
             setProduct(editProductFetchData);
         }
