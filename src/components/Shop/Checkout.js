@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useOutletContext,useNavigate} from 'react-router-dom';
 import { createCreditCard, purchaseCart } from '../../api/cart';
+import {viewCartFetch} from '../../api/cart';
 
 
 const Checkout = () =>{
@@ -17,38 +18,42 @@ const Checkout = () =>{
     console.log(cartData);
     async function formSubmitHandler(event){
       event.preventDefault();
-      // if(creditNumber == undefined || creditNumber.length != 16 ){
-      //   setError("Invalid credit card number length")
-      //   return 
-      // }else if(CCV == undefined|| CCV.length != 3){
-      //   setError("Invalid CCV length")
-      //   return 
-      // }else if(expiration == undefined || expiration.length > 5 ||expiration.length < 3 ){
-      //   setError("Invalid expiration")
-      //   return
-      // }else if(zipcode == undefined || zipcode.length != 5){
-      //   setError( "Invalid zipcode");
-      //   return
-      // }else{
+      if(creditNumber == undefined || creditNumber.length != 16 ){
+        setError("Invalid credit card number length")
+        return 
+      }else if(CCV == undefined|| CCV.length != 3){
+        setError("Invalid CCV length")
+        return 
+      }else if(expiration == undefined || expiration.length > 5 ||expiration.length < 3 ){
+        setError("Invalid expiration")
+        return
+      }else if(zipcode == undefined || zipcode.length != 5){
+        setError( "Invalid zipcode");
+        return
+      }else{
         try{
           if(cartData.products.length){
             const purchase = await purchaseCart();
-            // const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
+            const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
             console.log(purchase);
             if(purchase){
+              const cart = await viewCartFetch();
+              setCartData(cart)
               navigate('/checkout-success')
             }
           }
         }catch(error){
           console.log(error);
         }
-      // }
+      }
       
     }
 
 
     return(
-      <div>
+      <div className ="cart-return">
+        
+        
         <form onSubmit={formSubmitHandler}>
           <div className="creditCard">
           
@@ -75,12 +80,14 @@ const Checkout = () =>{
             
           </div>
           {/* we need to make an address holster for the credit card runner */}
+          <div className="creditCard">
           <div className="address">
             <label>Address</label>
           </div>
+          </div>
+          
 
-          <div className="cart-item-container">
-            <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
+          <div className="cart-details">
             <div className="cart-item-container">
               {
                 cartData.products && cartData.products.length ? cartData.products.map((product, idx) => {
@@ -107,9 +114,12 @@ const Checkout = () =>{
               }
             </div>
           </div>
+        </form>
+        <div className = "cart-checkout-container">
+        <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
           <button id="purchaseItems" type="submit">Finalize Purchase</button>
           {errorMessage?<div>{errorMessage}</div>:null}
-        </form>
+        </div>
       </div>
     )
     
