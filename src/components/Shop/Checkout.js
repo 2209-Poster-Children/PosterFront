@@ -57,32 +57,54 @@ const Checkout = () =>{
         
         <form onSubmit={formSubmitHandler}>
         <p id="cart-username">{userData?.user?.username}'s Final Cart</p>
+
+        {/* Step 1. Confirm Credit Card */}
           <div className="checkout-fields-container">
+
             <div className="checkout-step-number">
               <RiNumber1 />
             </div>
+
             <div className="checkout-creditCard">
+
+              <span className="checkout-step-title">
+                Enter Payment Information</span>
+              <br />
+              <br />
           
               <label>Creditcard owners name:</label>
               <br/>
+
               <input type="text" value={creditName} onChange={(event) => {setCreditName(event.target.value)}}></input>
               <br/>
+
               <label>Credit Card Number:</label>
               <br/>
+
               <input type="number" value={creditNumber} onChange={(event) => {setCreditNumber(event.target.value)}}></input>
               <br />
-              <label>Credit Card CCV:</label>
+
+              <label>Credit Card CVV:</label>
               <br/>
+
               <input type="number" value={CCV} onChange={(event) => {setCCV(event.target.value)}}></input>
               <br />
+
               <label>Expiration Date</label>
               <br/>
+
               <input type="number" value={expiration} onChange={(event) => {setExpiration(event.target.value)}}></input>
               <br />
+
               <label>Zipcode:</label>
               <br/>
+
+              <input type="number" value={zipcode} onChange={(event) => {setZipcode(event.target.value)}}></input>
             </div>
-            </div>
+          </div>
+
+            {/* Step 2. Confirm Address */}
+            <br/>
 
             <div className="checkout-fields-container">
 
@@ -91,18 +113,27 @@ const Checkout = () =>{
               </div>
 
               <div className="checkout-address">
-              
-                <input type="number" value={zipcode} onChange={(event) => {setZipcode(event.target.value)}}></input>
+                <span className="checkout-step-title">Shipping Address</span>
+                <br />
+                <br />
+
+                <label>Ship to:</label>
+                <br />
+                <select>
+                  <option>My House</option>
+                  <option>Workplace</option>
+                  <option>Sanchita's House</option>
+                </select>
+
               </div>
-            <br/>
             
             </div>
           {/* we need to make an address holster for the credit card runner */}
-          <div className="creditCard">
+          {/* <div className="creditCard">
           <div className="address">
             <label>Address</label>
           </div>
-          </div>
+          </div> */}
           
 
           <div className="cart-details">

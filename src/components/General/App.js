@@ -63,13 +63,16 @@ const App = () => {
                     Developed by Drewford</a>
                 &nbsp; | &nbsp;
                 
-                Yaass Yeisi
+                <a href="http://127.0.0.1:5500/PERSONAL/personal_site/index.html" target="_blank">
+                    Yaas Yeisi</a>
                 &nbsp; | &nbsp;
                 
-                Made by Madi
+                <a href="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?playlist=dQw4w9WgXcQ&autoplay=1&iv_load_policy=3&loop=1&modestbranding=1&start=" target="_blank">
+                    Made by Madi</a>
                 &nbsp; | &nbsp;
                 
-                Initialized by Ian
+                <a href="http://127.0.0.1:5500/PERSONAL/personal_site/index.html" target="_blank">
+                    Initialized by Ian</a>
                 
             </footer>
         </div>
