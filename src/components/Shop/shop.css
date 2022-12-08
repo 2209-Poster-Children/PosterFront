@@ -221,6 +221,10 @@
   background-color: orange;
 }
 
+#cart-come-back-later {
+  text-align: center;
+}
+
 .address{
   display:flex;
 }
