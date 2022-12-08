@@ -14,11 +14,13 @@ import Orders from './components/Profile/Orders';
 import Reviews from './components/Profile/Reviews';
 import Addresses from './components/Profile/Addresses';
 import Settings from './components/Profile/Settings';
+import Admin from './components/Profile/Admin';
 // SHOP
 import Products from './components/Shop/Products';
 import ProductDetails from './components/Shop/ProductDetails';
 import Cart from './components/Shop/Cart';
 import Checkout from './components/Shop/Checkout';
+import CheckoutSuccess from './components/Shop/CheckoutSuccess';
 
 const router = createBrowserRouter([
     {
@@ -59,6 +61,10 @@ const router = createBrowserRouter([
                 path: "profile/settings",
                 element: <Settings />
             },
+            {
+                path: "profile/admin",
+                element: <Admin />
+            },
             // SHOP
             {
                 path: "shop",
@@ -79,6 +85,10 @@ const router = createBrowserRouter([
             {
                 path: "checkout",
                 element:<Checkout />
+            },
+            {
+                path: "checkout-success",
+                element:<CheckoutSuccess />
             }
         ]
     }

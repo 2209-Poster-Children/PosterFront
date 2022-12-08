@@ -44,8 +44,8 @@
     flex-grow: 1;
     border-style: none;
     outline: none;
-    background-color: rgb(6, 6, 77);
-    color: lightblue;
+    background-color: black;
+    color: white;
 }
 
 .light-mode .user-form input {
@@ -58,7 +58,7 @@
     border-radius: 5px;
     font-size: 14pt;
     cursor: pointer;
-    background-color: lightblue;
+    background-color: lightgray;
 }
 
 .error-container {
@@ -118,11 +118,11 @@
     margin: 15px;
     border: 2px solid;
     border-radius: 10px;
-    color: lightblue;
+    color: rgb(51, 146, 205);
 }
 
 .light-mode .profile-card {
-    color: rgb(6, 6, 77);
+    color: rgb(51, 146, 205);
 }
 
 .profile-card-img {
@@ -144,7 +144,88 @@
 
 .profile-navbar-icon {
     font-size: 2em;
-    color: lightblue;
+    color: rgb(51, 146, 205);
+}
+
+/* ADMIN */
+
+.greeting-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-icon {
+    font-size: 2em;
+    margin-left: 20px;
+    color: #f240a0;
+    cursor: pointer;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+    margin: 15px;
+    border: 2px solid;
+    border-radius: 10px;
+    color: rgb(51, 146, 205);
+}
+
+.admin-card-img {
+    font-size: 2em;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 2px;
+    min-width: 200px;
+}
+
+.user-icon {
+    font-size: 2em;
+}
+
+.user-element {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    margin: 2px;
+    border: 2px solid #1b1b1b;
+    border-radius: 5px;
+    background-color: #1b1b1b;
+}
+
+.light-mode .user-element {
+    background-color: rgb(221, 221, 221);
+    border-color: lightgray;
+}
+
+.user-label {
+    color: skyblue;
+    font-size: 10pt;
+    background-color: #1b1b1b;
+}
+
+.light-mode .user-label {
+    color: rgb(33, 109, 156);
+    background-color: rgb(221, 221, 221);
+}
+
+.user-value {
+    font-weight: bold;
+    background-color: #1b1b1b;
+}
+
+.light-mode .user-value {
+    background-color: rgb(221, 221, 221);
 }
 
 /* ADDRESSES */
@@ -167,34 +248,34 @@
     align-self: center;
     padding: 2px;
     margin: 5px;
-    border: 2px solid rgb(32, 32, 102);
+    border: 2px solid #1b1b1b;
     border-radius: 5px;
-    background-color: rgb(32, 32, 102);
+    background-color: #1b1b1b;
 }
 
 .light-mode .address-element {
-    border-color: lightblue;
-    background-color: lightblue;
+    border-color: whitesmoke;
+    background-color: whitesmoke;
 }
 
 .address-label {
-    color: lightcyan;
+    color: skyblue;
     font-size: 10pt;
-    background-color: rgb(32, 32, 102);;
+    background-color: #1b1b1b;
 }
 
 .light-mode .address-label {
-    color: #551a8b;
-    background-color: lightblue;
+    color: #1b1b1b;
+    background-color: whitesmoke;
 }
 
 .address-value {
     font-weight: bold;
-    background-color: rgb(32, 32, 102);
+    background-color: #1b1b1b;
 }
 
 .light-mode .address-value {
-    background-color: lightblue;
+    background-color: whitesmoke;
 }
 
 .address-number {
@@ -202,7 +283,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: darkcyan;
+    background: rgb(51, 146, 205);
     border-radius: 50%;
     min-width: 40px;
     min-height: 40px;
@@ -210,22 +291,22 @@
 }
 
 .primary-address {
-    background-color: darkcyan;
+    background-color: rgb(51, 146, 205);
 }
 
 .new-address-button {
     margin: 20px;
     padding: 5px;
-    border: 2px solid darkcyan;
+    border: 2px solid rgb(51, 146, 205);
     border-radius: 5px;
     cursor: pointer;
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 
 .new-address-button-label {
     padding: 5px;
     font-weight: bold;
-    color: darkcyan;
+    color: rgb(51, 146, 205);
 }
 
 .new-address-button-icon {
@@ -237,8 +318,8 @@
     height: 20px;
     font-size: 2em;
     padding: 2px;
-    background-color: darkcyan;
-    color: lightgray;
+    background-color: rgb(51, 146, 205);
+    color: whitesmoke;
 }
 
 .address-form {
@@ -251,8 +332,6 @@
     border: 2px solid;
     border-radius: 10px;
     font-size: 14pt;
-    background-color: rgb(6, 6, 77);
-    /* color: #551a8b; */
 }
 
 .light-mode .address-form {
@@ -265,8 +344,8 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
-    background-color: rgb(32, 32, 102);
-    color: lightblue;
+    background-color: #1b1b1b;
+    color: white;
 }
 
 .light-mode .address-form input {
@@ -283,8 +362,8 @@
     padding: 5px;
     border: 2px solid;
     border-radius: 5px;
-    background-color: rgb(32, 32, 102);
-    color: lightblue;
+    background-color: #1b1b1b;
+    color: white;
 }
 
 .light-mode .address-state-select {
@@ -356,11 +435,11 @@
 }
 
 input:checked + .slider {
-    background-color: darkcyan;
+    background-color: rgb(51, 146, 205);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px darkcyan;
+    box-shadow: 0 0 1px rgb(51, 146, 205);
 }
 
 input:checked + .slider:before {
@@ -379,6 +458,46 @@ input:checked + .slider:before {
 }
 
 
+/* REVIEWS */
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 20px;
+    width: 400px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #1b1b1b;  
+}
+
+.light-mode .review-container {
+    background-color: lightgray;
+}
+
+.review-title {
+    font-size: 18pt;
+    font-weight: bolder;
+}
+
+.review-product {
+    align-self: center;
+    color: rgb(51, 146, 205);
+}
+
+.review-description {
+    font-family: 'Lucida Sans Unicode', 'Lucida Sans', Arial, sans-serif;
+    background-color: black;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.light-mode .review-description {
+    background-color: whitesmoke;
+}
 
 
 /* MOVE TO shop.css */
