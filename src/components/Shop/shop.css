@@ -282,7 +282,10 @@
 }
 
 .checkout-address {
+  width: 350px;
   padding-bottom: 40px;;
+  margin-bottom: 40px;
+  border-bottom: 2px outset lightgray;
 }
 
 .checkout-address select {
@@ -290,4 +293,23 @@
   border-radius: 5px;
   width: 260px;
   /* background-color: red; */
+}
+
+/* .checkout-cart-item-container {
+  border: 3px inset lightblue;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url('https://i.imgur.com/qQA0LMY.png');
+} */
+
+.checkout-cart-item {
+  border: 3px inset lightblue;
+  width: 350px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url('https://i.imgur.com/qQA0LMY.png');
 }
