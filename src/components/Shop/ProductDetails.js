@@ -1,6 +1,7 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
+import addToCart from '../../api/guest';
 
 const ProductDetails = () => {
   const { cartObj: [cartData, setCartData]}= useOutletContext();
@@ -36,27 +37,33 @@ const ProductDetails = () => {
     getIndivProduct();
 
   }, []);
-
+  
   async function addProductToCart(event){
     event.preventDefault();
-    //write quantity functional stuff later (usestate)
-    console.log(cartData);
-    if(safeCheck(cartData, id)){
-      const addQuantityFetchedData = await addQuantityFetch(id,quantity);
-      console.log(addQuantityFetchedData);
-    }else{
-      const addCartFetchedData = await addToCartFetch(id,quantity);
-      console.log(addCartFetchedData);
+    if(!userData.user){
+      setCartData(addToCart(product, quantity));
+      console.log("you're a pleb without a cart");
     }
-      const fetchCart = await viewCartFetch();
-      setCartData(fetchCart);
+    else{
+      //write quantity functional stuff later (usestate)
+      console.log(cartData);
+      if(safeCheck(cartData, id)){
+        const addQuantityFetchedData = await addQuantityFetch(id,quantity);
+        console.log(addQuantityFetchedData);
+      }else{
+        const addCartFetchedData = await addToCartFetch(id,quantity);
+        console.log(addCartFetchedData);
+      }
+        const fetchCart = await viewCartFetch();
+        setCartData(fetchCart);
+    }
   }
 
   //this function will check if a cart already has a product id and instead push a quantity instead of 
   // trying to add to cart.
   const safeCheck = (cart,productId) =>{
     let checker = false;
-    cart.products.forEach((product)=>{
+    cart?.products?.forEach((product)=>{
       if(product.productId == productId){
         checker = true
       }

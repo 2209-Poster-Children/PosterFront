@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useOutletContext,useNavigate} from 'react-router-dom';
 import { createCreditCard, purchaseCart } from '../../api/cart';
+import {viewCartFetch} from '../../api/cart';
 
 
 const Checkout = () =>{
@@ -36,6 +37,8 @@ const Checkout = () =>{
             // const credit = await createCreditCard({creditName,creditNumber,CCV,expiration,zipcode})
             console.log(purchase);
             if(purchase){
+              const cart = await viewCartFetch();
+              setCartData(cart)
               navigate('/checkout-success')
             }
           }

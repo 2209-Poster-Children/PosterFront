@@ -5,6 +5,7 @@ const CartQuantityDropdown = ({product}) =>{
     
     const [quantity, setQuantity] = useState(product.quantity);
     const { cartObj:[cartData, setCartData] } = useOutletContext();
+    const { userObj:{userData}}= useOutletContext();
 
     async function changeQuantity(){
         const addQuantityFetchedData = await addQuantityFetch(product.productId,quantity);
@@ -18,7 +19,7 @@ const CartQuantityDropdown = ({product}) =>{
             const cart = await viewCartFetch();
             setCartData(cart)
         }
-        updateCart();
+        if(userData.user)updateCart();
     
     },[quantity])
 

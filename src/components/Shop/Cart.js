@@ -29,7 +29,7 @@ const Cart = () => {
     <div className="cart-return">
 
     <div className="cart-item-container">
-      <p id="cart-username">{userData?.user?.username}'s Shopping Cart</p>
+      <p id="cart-username">{userData?.user?.username||"Lovely Amazing Guest"}'s Shopping Cart</p>
       {
         cartData.products && cartData.products.length ? cartData.products.map((product, idx) => {
           return <div className="cart-item" key={idx}>
@@ -48,7 +48,7 @@ const Cart = () => {
               </span>
 
               <span>${product.subtotal}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<CartDelete product={product}/> </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*<CartDelete product={product}/>*/} </span>
 
             </div>
 
