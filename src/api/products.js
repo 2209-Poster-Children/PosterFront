@@ -55,3 +55,33 @@ export async function newProductFetch(title, description, price, quantity, image
       console.log(error);
   }
 }
+
+export async function editProductFetch(title, description, price, quantity, imageUrl, imageAlt, categoryId) {
+    try {
+        const response = await fetch(
+            'https://poster-backendapi.onrender.com/api/products',
+            {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify({
+                    title: title,
+                    description: description,
+                    price: price,
+                    quantity: quantity,
+                    imageUrl: imageUrl,
+                    imageAlt: imageAlt,
+                    categoryId: categoryId
+                })
+            }
+        )
+
+        const data = await response.json();
+        console.log("edit product data: ", data);
+        return data;
+    } catch(error) {
+        console.log(error);
+    }
+}

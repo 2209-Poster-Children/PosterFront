@@ -543,8 +543,13 @@ input:checked + .slider:before {
     gap: 5px;
     padding: 5px;
     margin: 5px;
-    border: 2px solid royalblue;
+    border: 2px solid #f240a0;
     border-radius: 5px;
-    color: royalblue;
+    color: #f240a0;
     cursor: pointer;
+}
+
+.admin-button-container {
+    display: flex;
+    justify-content: flex-end;
 }
