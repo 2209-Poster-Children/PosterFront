@@ -2,6 +2,9 @@ import { useOutletContext, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
 import addToCart from '../../api/guest';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+
+import EditProduct from './EditProduct';
 
 const ProductDetails = () => {
   const { cartObj: [cartData, setCartData]}= useOutletContext();
@@ -12,7 +15,8 @@ const ProductDetails = () => {
   const [mouseOverClass, setMouseOverClass] = useState("")
   const [mouseOverTipClass, setMouseOverTipClass] = useState("tooltip")
   const [mouseOverTipTextClass, setMouseOverTipTextClass] = useState("tooltiptext")
-  const {userObj: {userData}} = useOutletContext()
+  const [toggleEditProductForm, setToggleEditProductForm] = useState(false);
+  const {userObj: {loggedIn, userData}} = useOutletContext()
   const { id } = useParams();
 
   useEffect(() => {
@@ -98,9 +102,26 @@ const ProductDetails = () => {
     setQuantity(event.target.value)
   }
   
+  function handleToggleEditProductForm() {
+    setToggleEditProductForm(!toggleEditProductForm);
+  }
+
   if (product.id) {
     return (
       <div className="details-return">
+        <div className='admin-button-container'>
+        {
+          loggedIn && userData.user.isAdmin ? <div onClick={handleToggleEditProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Edit product</div></div> : null
+        }
+        </div>
+        <div className='vert-flex-container'>
+        {
+          toggleEditProductForm ? <EditProduct product={product} handleToggleEditProductForm={handleToggleEditProductForm} setProduct={setProduct} /> : null
+        }
+        </div>
+
+
+
         {/* top */}
         <div className="details-main-container">
 

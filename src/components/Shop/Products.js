@@ -8,6 +8,9 @@ import { fetchProductData } from '../../api/products';
 import Searchbar from './Searchbar';
 import NewProduct from './NewProduct';
 
+import { BsStarFill } from 'react-icons/bs'
+import { BsStarHalf } from 'react-icons/bs';
+
 
 //named export, deconstructed on import
 // ^as opposed to "export default" on a component
@@ -36,20 +39,35 @@ const Products = () => {
     setToggleNewProductForm(!toggleNewProductForm);
   }
 
+  console.log(productData[0]?.count)
 
   return (
     <div>
-      <div className='horiz-flex-container'>
-        <Searchbar productData={productData} />
+      <div className='admin-button-container'>
         {
           loggedIn && userData.user.isAdmin ? <div onClick={handleToggleNewProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Add new product</div></div> : null
         }
       </div>
+
+      <Searchbar productData={productData} />
+
       {
         toggleNewProductForm ? <NewProduct handleToggleNewProductForm={handleToggleNewProductForm} setProductData={setProductData} /> : null
       }
+
+      <div className="products-pagination-nav">
+        Go to Page...
+        <span>(-1) {"<"}</span>
+        <Link to="/shop/page/1">1</Link>,
+        <Link to="/shop/page/2">2</Link>,
+        <Link to="/shop/page/3">3</Link>,
+        <Link to="/shop/page/4">4</Link>
+        <span>(+1) {">"}</span> 
+      </div>
       
       <div className="products-container">
+
+      <div className='horiz-flex-container'></div>
 
       {
         productData && productData.length ? productData.map((product, idx) => {
@@ -62,16 +80,25 @@ const Products = () => {
             </Link>
           </div>
 
-          <Link to={`/shop/item/${product.id}`}>
-            <span className="name-detail">
-              <b>{product.title}</b></span>
-          </Link>
+          <div className="product-info">
 
-          <p className="rating-detail">
-            Rating?????</p>
+            <Link to={`/shop/item/${product.id}`}>
+              <span className="name-detail">
+                <b>{product.title}</b></span>
+            </Link>
 
-          <p className="price-detail">
-            {product.price}</p>
+            <p className="rating-detail">
+              <BsStarFill />
+              <BsStarFill />
+              <BsStarFill />
+              <BsStarFill />
+              <BsStarHalf />
+            </p>
+
+            <p className="price-detail">
+              ${product.price}</p>
+
+          </div>
 
           </div>
 
@@ -80,7 +107,13 @@ const Products = () => {
       
 
       </div> {/* end of products container */}
-      <Link to="/shop/page/2">Page 2</Link>
+      <div className="products-pagination-nav">
+        Go to Page...
+        <Link to="/shop/page/1">1</Link>,
+        <Link to="/shop/page/2">2</Link>,
+        <Link to="/shop/page/3">3</Link>,
+        <Link to="/shop/page/4">4</Link>
+      </div>
     </div> 
   ) // end of return statement 
 }
