@@ -5,6 +5,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import { FaShoppingCart, FaReceipt, FaAddressCard } from 'react-icons/fa';
 import { AiFillStar } from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 import Logout from './Logout';
 
@@ -26,9 +27,14 @@ const Profile = () => {
                 :
 
                 <div className='vert-flex-container'>
+                    <div className='greeting-container'>
                     {
                         <h1>{randomGreeting}, {userData.user.username}!</h1>
                     }
+                    {
+                        userData.user.isAdmin ? <Link to='admin'><MdOutlineAdminPanelSettings className='admin-icon' /></Link> : null
+                    }
+                    </div>
 
                     <div className='profile-cards-container'>
                         <Link to='../cart' className='no-underline'>
