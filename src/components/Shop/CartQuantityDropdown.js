@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { addQuantityFetch ,viewCartFetch} from '../../api/cart';
 import { useOutletContext } from 'react-router-dom';
+import {guestProductsQuantity} from '../../api/guest';
 const CartQuantityDropdown = ({product}) =>{
     
     const [quantity, setQuantity] = useState(product.quantity);
@@ -8,8 +9,13 @@ const CartQuantityDropdown = ({product}) =>{
     const { userObj:{userData}}= useOutletContext();
 
     async function changeQuantity(){
+        if(userData.user){
         const addQuantityFetchedData = await addQuantityFetch(product.productId,quantity);
         console.log(addQuantityFetchedData);
+        }else{
+            const newCart = guestProductsQuantity(product,quantity)
+            setCartData(newCart);
+        }
     }
 
     useEffect(() =>{
@@ -20,6 +26,9 @@ const CartQuantityDropdown = ({product}) =>{
             setCartData(cart)
         }
         if(userData.user)updateCart();
+        else{
+            changeQuantity();
+        }
     
     },[quantity])
 

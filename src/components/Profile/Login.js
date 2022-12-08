@@ -27,7 +27,8 @@ const Login = () => {
     if (loginFetchData.token) {
       setLoggedIn(true);
       localStorage.setItem("token", loginFetchData.token);
-      const userFetchData = await userFetch();    
+      const userFetchData = await userFetch();
+          
       setUserData(userFetchData);
       navigate('/');
     } else {

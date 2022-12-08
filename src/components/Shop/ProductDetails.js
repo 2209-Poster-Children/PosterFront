@@ -1,7 +1,7 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
-import addToCart from '../../api/guest';
+import {addToCart} from '../../api/guest';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 import EditProduct from './EditProduct';

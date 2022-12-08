@@ -223,6 +223,7 @@
 
 .address{
   display:flex;
+}
 /* Styling for Shop Components */
 
 /* Shop Page */
@@ -491,7 +492,7 @@
 }
   
 
-}
+
 /* .checkout-creditCard{
   display: flex;
   flex-direction: column;

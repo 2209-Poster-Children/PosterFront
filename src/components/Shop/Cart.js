@@ -38,7 +38,6 @@ const Cart = () => {
               <span><img src={product.imageUrl} alt={product.imageAlt} height="150" /></span>
             </div>
 
-
             <div className="cart-details">
               <span>{product.title}
 
@@ -48,7 +47,7 @@ const Cart = () => {
               </span>
 
               <span>${product.subtotal}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*<CartDelete product={product}/>*/} </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<CartDelete product={product}/> </span>
 
             </div>
 

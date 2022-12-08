@@ -8,6 +8,7 @@ import('./profile.css');
 const Logout = () => {
 
   const { userObj: {setLoggedIn, setUserData} } = useOutletContext();
+  const { cartObj: [cartData,setCartData ]} = useOutletContext();
   const navigate = useNavigate();
 
   function logOutUser() {
@@ -15,6 +16,7 @@ const Logout = () => {
     localStorage.removeItem('token');
     setLoggedIn(false);
     setUserData({});
+    localStorage.getItem("cart")?setCartData(JSON.parse(localStorage.getItem("cart"))): setCartData({})
     navigate('/');
   }
 
