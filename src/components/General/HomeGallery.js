@@ -7,11 +7,11 @@ const GallerySrc = () => {
   let data = [
     {
       id: 1,
-      imgSrc: 'https://i.ebayimg.com/images/g/jXMAAOSwpTFgQ4it/s-l400.jpg'
+      imgSrc: 'https://i.pinimg.com/originals/a1/5a/5d/a15a5d5e0e12202f78fbc811a6498c08.jpg'
     },
     {
       id: 2,
-      imgSrc: 'https://i.pinimg.com/originals/a1/5a/5d/a15a5d5e0e12202f78fbc811a6498c08.jpg'
+      imgSrc: 'https://i.ebayimg.com/images/g/jXMAAOSwpTFgQ4it/s-l400.jpg'
     },
     {
       id: 1,
