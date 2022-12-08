@@ -8,6 +8,9 @@ import { fetchProductData } from '../../api/products';
 import Searchbar from './Searchbar';
 import NewProduct from './NewProduct';
 
+import { BsStarFill } from 'react-icons/bs'
+import { BsStarHalf } from 'react-icons/bs';
+
 
 //named export, deconstructed on import
 // ^as opposed to "export default" on a component
@@ -52,12 +55,12 @@ const Products = () => {
 
       <div className="products-pagination-nav">
         Go to Page...
-        <span>(-1)</span>
+        <span>(-1) {"<"}</span>
         <Link to="/shop/page/1">1</Link>,
         <Link to="/shop/page/2">2</Link>,
         <Link to="/shop/page/3">3</Link>,
         <Link to="/shop/page/4">4</Link>
-        <span>(+1)</span>
+        <span>(+1) {">"}</span> 
       </div>
       
       <div className="products-container">
@@ -75,16 +78,25 @@ const Products = () => {
             </Link>
           </div>
 
-          <Link to={`/shop/item/${product.id}`}>
-            <span className="name-detail">
-              <b>{product.title}</b></span>
-          </Link>
+          <div className="product-info">
 
-          <p className="rating-detail">
-            Rating?????</p>
+            <Link to={`/shop/item/${product.id}`}>
+              <span className="name-detail">
+                <b>{product.title}</b></span>
+            </Link>
 
-          <p className="price-detail">
-            {product.price}</p>
+            <p className="rating-detail">
+              <BsStarFill />
+              <BsStarFill />
+              <BsStarFill />
+              <BsStarFill />
+              <BsStarHalf />
+            </p>
+
+            <p className="price-detail">
+              ${product.price}</p>
+
+          </div>
 
           </div>
 

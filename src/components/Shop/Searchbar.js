@@ -38,17 +38,17 @@ function searchText(event){
       
       <form onSubmit ={searchPosts}>
         
-        <select>
+        <select className="search-dropdown">
           <option value="all">All</option>
           <option value="Movies">Movies</option>  
           <option value="music">Music</option>
           <option value="videogames">Video Games</option>
         </select> 
 
-        <input type="text" value = {search} onChange={(event)=>{setSearch(event.target.value)
+        <input className="search-input" type="text" value = {search} onChange={(event)=>{setSearch(event.target.value)
         }}></input>
 
-        <button type="submit"><ImSearch /></button>
+        <button className="search-products-bttn" type="submit"><ImSearch /></button>
 
       </form>
 
