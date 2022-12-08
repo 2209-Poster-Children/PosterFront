@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useOutletContext,useNavigate} from 'react-router-dom';
 import { createCreditCard, purchaseCart } from '../../api/cart';
 import {viewCartFetch} from '../../api/cart';
-import { RiNumber1, RiNumber2 } from 'react-icons/ri'
 import {guestCheckout} from '../../api/guest';
+import { RiNumber1, RiNumber2, RiNumber3 } from 'react-icons/ri'
 
 
 const Checkout = () =>{
@@ -143,11 +143,16 @@ const Checkout = () =>{
           </div> */}
           
 
-          <div className="cart-details">
-            <div className="cart-item-container">
+          <div className="checkout-fields-container">
+            
+              <div className="checkout-step-number">
+                <RiNumber3 />
+              </div>
+
+            <div className="checkout-cart-item-container">
               {
                 cartData.products && cartData.products.length ? cartData.products.map((product, idx) => {
-                  return <div className="cart-item" key={idx}>
+                  return <div className="checkout-cart-item" key={idx}>
 
                     <div className="cart-image">
                       <span><img src={product.imageUrl} alt={product.imageAlt} height="150" /></span>
