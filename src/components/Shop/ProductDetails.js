@@ -171,7 +171,7 @@ const ProductDetails = () => {
             <br/>
             <br />
             <form onSubmit={addProductToCart}>
-              <input type="number" value={quantity} min="1" max="10" placeholder="1" onChange={handleQuantityChange}></input>
+              <input id="details-quantity-for-cart" type="number" value={quantity} min="1" max="10" placeholder="1" onChange={handleQuantityChange}></input>
               <button type="submit" id="add-to-cart">Add to Cart</button>
             </form>
             <p>About this item:</p>

@@ -57,13 +57,16 @@ const Cart = () => {
       }
       </div>
       <div className="cart-checkout-container">
-        <br />
-          <span>Cart Subtotal: ${cartData.totalPrice}</span>
-        <br />
-          <span>Est. Taxes </span>
-        <br />
-          <span>Est. Total after taxes</span>
-        <br />
+        <div className="cart-est-price">
+          <br />
+            <span>Cart Subtotal: ${cartData.totalPrice}</span>
+          <br />
+            <span>Est. Taxes </span>
+          <br />
+            <span>Est. Total after taxes</span>
+          <br />
+          <br />
+        </div>
 
         <Link to='/checkout'><button id="cart-checkout-bttn">Checkout</button></Link>
       </div>

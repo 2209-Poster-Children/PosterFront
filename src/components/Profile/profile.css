@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 .vert-flex-container {
     display: flex;
     flex-direction: column;
@@ -26,6 +28,8 @@
     border: 2px solid;
     border-radius: 10px;
     font-size: 14pt;
+    /* Drew */
+    background-image: url('https://i.imgur.com/C9DLjKS.png');
 }
 
 .input-container {
@@ -45,6 +49,14 @@
     border-style: none;
     outline: none;
     background-color: black;
+    color: white;
+    /* drew */
+    font-family: "Caveat";
+    font-size: large;
+}
+
+/* drew */
+#register-link {
     color: white;
 }
 
@@ -119,6 +131,8 @@
     border: 2px solid;
     border-radius: 10px;
     color: rgb(51, 146, 205);
+    /* drew */
+    background-image: url('https://i.imgur.com/C9DLjKS.png');
 }
 
 .light-mode .profile-card {

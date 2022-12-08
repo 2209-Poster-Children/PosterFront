@@ -57,7 +57,20 @@ const App = () => {
             }} />
 
             <footer>
-                <h4>Wep App Assembled by DYMI 2209</h4>
+                <h4>Assembled by DYMI 2209</h4>
+
+                <a href="https://developedbydrewford.netlify.app" target="_blank">
+                    Developed by Drewford</a>
+                &nbsp; | &nbsp;
+                
+                Yaass Yeisi
+                &nbsp; | &nbsp;
+                
+                Made by Madi
+                &nbsp; | &nbsp;
+                
+                Initialized by Ian
+                
             </footer>
         </div>
     )
