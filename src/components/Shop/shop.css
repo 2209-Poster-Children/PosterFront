@@ -390,7 +390,6 @@
   border-radius: 30px;
   padding: 10px;
   width: 150px;
-
 }
 
 #actual-description {
@@ -445,6 +444,13 @@
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 1.2em;
+}
+
+.cart-remove {
+  height: 30px;
+  width: 40px;
+  background-color: red;
+  border-radius: 5px;;
 }
 
 .cart-checkout-container {

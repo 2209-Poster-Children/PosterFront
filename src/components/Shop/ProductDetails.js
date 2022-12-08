@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { addQuantityFetch, addToCartFetch, viewCartFetch } from '../../api/cart';
 import {addToCart} from '../../api/guest';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import EditProduct from './EditProduct';
 
@@ -61,6 +63,7 @@ const ProductDetails = () => {
         const fetchCart = await viewCartFetch();
         setCartData(fetchCart);
     }
+    toast(`Successfully added ${product.title} to cart`)
   }
 
   //this function will check if a cart already has a product id and instead push a quantity instead of 
@@ -109,6 +112,8 @@ const ProductDetails = () => {
   if (product.id) {
     return (
       <div className="details-return">
+        <ToastContainer 
+          theme="dark"/>
         <div className='admin-button-container'>
         {
           loggedIn && userData.user.isAdmin ? <div onClick={handleToggleEditProductForm} className='add-product-button'><MdOutlineAdminPanelSettings /><div>Edit product</div></div> : null
